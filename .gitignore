@@ -1,0 +1,66 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# IDE files
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Downloaded and generated data
+data/external/
+data/interim/
+data/processed/
+
+# Generated manual data
+data/manual/playoff_series.csv
+
+# Preserve manually maintained inputs
+!data/manual/manual_category_inputs.csv
+!data/manual/.gitkeep
+
+# Generated models
+models/*.joblib
+models/*.pkl
+models/*.pickle
+models/training_metadata.json
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# Raw downloaded and API cache data
+data/raw/*
+!data/raw/.gitkeep
+
+# Temporary source backups
+*.bak
+*.backup

@@ -1,0 +1,26 @@
+metric_families:
+  scoring:
+    direction: higher
+    metrics: [pts_per_75, rts_pct, scoring_load, playoff_pts_per_75, playoff_rts_pct]
+  playmaking:
+    direction: higher
+    metrics: [ast_per_75, ast_pct, creation_proxy, ast_tov_ratio]
+  possession_value:
+    direction: higher
+    metrics: [bpm, vorp_rate, ws_per_48, on_off_net]
+  defense:
+    direction: higher
+    metrics: [dbpm, defensive_ws_rate, steal_block_index, defense_film_score]
+  availability:
+    direction: higher
+    metrics: [games_share, minutes_share, durable_prime_seasons]
+  winning:
+    direction: higher
+    metrics: [series_overperformance, title_probability_added, playoff_srs_defeated]
+
+coverage_rules:
+  minimum_minutes_regular: 1000
+  minimum_minutes_playoffs: 200
+  missing_metric_policy: reweight_within_family
+  minimum_family_coverage: 0.50
+  show_confidence_badge: true

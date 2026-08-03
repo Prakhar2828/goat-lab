@@ -1,0 +1,51 @@
+profiles:
+  balanced:
+    peak: 0.16
+    prime: 0.14
+    longevity: 0.12
+    regular_season: 0.12
+    playoffs: 0.18
+    winning_context: 0.10
+    offense: 0.06
+    defense: 0.06
+    cultural_impact: 0.06
+  peak_purist:
+    peak: 0.35
+    prime: 0.20
+    longevity: 0.03
+    regular_season: 0.08
+    playoffs: 0.20
+    winning_context: 0.08
+    offense: 0.02
+    defense: 0.03
+    cultural_impact: 0.01
+  career_value:
+    peak: 0.08
+    prime: 0.12
+    longevity: 0.30
+    regular_season: 0.16
+    playoffs: 0.16
+    winning_context: 0.06
+    offense: 0.04
+    defense: 0.03
+    cultural_impact: 0.05
+  championship_traditionalist:
+    peak: 0.14
+    prime: 0.10
+    longevity: 0.05
+    regular_season: 0.06
+    playoffs: 0.26
+    winning_context: 0.25
+    offense: 0.04
+    defense: 0.07
+    cultural_impact: 0.03
+  two_way:
+    peak: 0.16
+    prime: 0.14
+    longevity: 0.08
+    regular_season: 0.10
+    playoffs: 0.16
+    winning_context: 0.08
+    offense: 0.12
+    defense: 0.14
+    cultural_impact: 0.02

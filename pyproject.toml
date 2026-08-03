@@ -1,0 +1,58 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "goat-lab"
+version = "0.1.0"
+description = "Coverage-aware Jordan vs. LeBron GOAT analysis platform"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "duckdb>=1.1",
+  "numpy>=2.0",
+  "pandas>=2.2",
+  "polars>=1.20",
+  "pyarrow>=18",
+  "scipy>=1.14",
+  "scikit-learn>=1.5",
+  "statsmodels>=0.14",
+  "plotly>=5.24",
+  "streamlit>=1.41",
+  "pyyaml>=6.0",
+  "pydantic>=2.10",
+  "pydantic-settings>=2.7",
+  "requests>=2.32",
+  "tenacity>=9.0",
+  "nba_api>=1.6",
+  "typer>=0.15",
+  "rich>=13.9",
+  "joblib>=1.4",
+  "pandera>=0.22",
+  "shap>=0.46",
+  "gdeltdoc>=1.12",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+  "pytest-cov>=6.0",
+  "ruff>=0.9",
+  "mypy>=1.14",
+  "pre-commit>=4.0",
+]
+bayes = ["pymc>=5.19", "arviz>=0.20"]
+
+[project.scripts]
+goatlab = "goatlab.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/goatlab"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

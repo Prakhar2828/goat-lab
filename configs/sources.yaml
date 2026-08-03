@@ -1,0 +1,50 @@
+players:
+  michael_jordan:
+    player_id: 893
+    display_name: Michael Jordan
+    career_start: 1984-85
+    career_end: 2002-03
+  lebron_james:
+    player_id: 2544
+    display_name: LeBron James
+    career_start: 2003-04
+    career_end: 2025-26
+
+primary_sources:
+  nba_api:
+    enabled: true
+    purpose:
+      - traditional season totals and rates
+      - per-100-possession data
+      - advanced NBA metrics
+      - player and team game logs
+      - awards
+      - shot charts where available
+    cache_dir: data/raw/nba_api
+  basketball_reference_manual:
+    enabled: true
+    purpose:
+      - PER, WS, WS48, BPM, OBPM, DBPM, VORP
+      - MVP voting shares
+      - SRS cross-checks
+    directory: data/manual/basketball_reference
+  shufinskiy_pbp:
+    enabled: false
+    purpose:
+      - possession and lineup reconstruction from 1996-97 onward
+      - playoff play-by-play
+    repository: https://github.com/shufinskiy/nba_data
+  wikimedia:
+    enabled: true
+    purpose:
+      - pageview attention from 2015-07-01 onward
+  gdelt:
+    enabled: true
+    purpose:
+      - media-volume and tone series for overlapping modern years
+
+comparison_windows:
+  complete_box_score: [1984-85, 2025-26]
+  possession_lineup: [1996-97, 2024-25]
+  tracking: [2013-14, 2025-26]
+  wikipedia_pageviews: [2015-07-01, 2026-08-03]

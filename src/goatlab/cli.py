@@ -9,6 +9,7 @@ from rich.console import Console
 from goatlab.data.cultural import ingest_wikimedia
 from goatlab.data.ingest_core import run_core_ingestion
 from goatlab.data.manual_imports import import_manual_advanced, import_mvp_votes
+from goatlab.models.cultural_impact import build_cultural_impact_scores
 from goatlab.models.playoff_expectation import (
     cross_fit_series_overperformance,
 )
@@ -32,6 +33,32 @@ def ingest_cultural() -> None:
     """Fetch Wikimedia attention data."""
     ingest_wikimedia()
     console.print("[green]Cultural attention ingestion complete.[/green]")
+
+
+@app.command("build-cultural")
+def build_cultural_command() -> None:
+    """Build the sourced cultural-impact score."""
+
+    scores = build_cultural_impact_scores()
+
+    console.print(
+        "[green]"
+        "Cultural-impact components built."
+        "[/green]"
+    )
+
+    console.print(
+        scores[
+            [
+                "PLAYER_NAME",
+                "ATTENTION_SCORE",
+                "RUBRIC_SCORE",
+                "RUBRIC_COVERAGE",
+                "cultural_impact_raw",
+                "CULTURAL_SCORE_COMPLETE",
+            ]
+        ].to_string(index=False)
+    )
 
 
 @app.command("import-advanced")

@@ -1,0 +1,18 @@
+attention_weight: 0.20
+rubric_weight: 0.80
+
+attention_components:
+  total_view_share: 0.50
+  median_daily_view_share: 0.30
+  median_annual_view_share: 0.20
+
+rubric_dimensions:
+  commercial_global_reach: 0.30
+  basketball_culture_influence: 0.30
+  media_entertainment_reach: 0.15
+  philanthropy_social_institutions: 0.25
+
+confidence_values:
+  High: 1.00
+  Medium: 0.75
+  Low: 0.50

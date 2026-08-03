@@ -199,6 +199,49 @@ def _load_context_scores(target: pd.DataFrame) -> pd.DataFrame:
         ].combine_first(result["winning_context_raw"])
         result = result.drop(columns=["winning_context_raw_model"])
 
+    cultural = read_optional_parquet(
+        settings.processed_dir
+        / "cultural_impact_scores.parquet"
+    )
+
+    if (
+        not cultural.empty
+        and {
+            "PLAYER_NAME",
+            "cultural_impact_raw",
+        }.issubset(cultural.columns)
+    ):
+        result = result.merge(
+            cultural[
+                [
+                    "PLAYER_NAME",
+                    "cultural_impact_raw",
+                ]
+            ],
+            on="PLAYER_NAME",
+            how="left",
+            suffixes=(
+                "",
+                "_model",
+            ),
+        )
+
+        result[
+            "cultural_impact_raw"
+        ] = result[
+            "cultural_impact_raw_model"
+        ].combine_first(
+            result[
+                "cultural_impact_raw"
+            ]
+        )
+
+        result = result.drop(
+            columns=[
+                "cultural_impact_raw_model"
+            ]
+        )
+
     manual_path = settings.manual_dir / "manual_category_inputs.csv"
     if manual_path.exists():
         manual = pd.read_csv(manual_path)

@@ -1,0 +1,9 @@
+PLAYER_NAME,DIMENSION,SCORE_0_100,CONFIDENCE,SOURCE_IDS,RATIONALE
+Michael Jordan,commercial_global_reach,98,High,CUL001;CUL002,"Category-defining global commercial franchise: $7.034B fiscal-year revenue, forty flagship models and four decades of product durability."
+Michael Jordan,basketball_culture_influence,100,High,CUL002;CUL003;CUL004,"The NBA directly links Jordan to league globalization, the Dream Team's worldwide impact and a multigenerational basketball and sneaker culture."
+Michael Jordan,media_entertainment_reach,94,High,CUL003;CUL005,"Long-lived film and documentary presence, including Space Jam and ESPN's most-watched documentary content."
+Michael Jordan,philanthropy_social_institutions,90,High,CUL006;CUL007,"Durable institutional giving includes four medical clinics, $27M to Novant Health and a $5M Smithsonian gift."
+LeBron James,commercial_global_reach,90,High,CUL101,"A sustained global signature line reaching model 23, nearly a quarter-century with Nike, global launches and repeated international activations."
+LeBron James,basketball_culture_influence,94,Medium,CUL101;CUL102;CUL103,Documented global next-generation influence plus athlete-led storytelling platforms that expanded how players control their public voice and cultural narratives.
+LeBron James,media_entertainment_reach,98,High,CUL103,"Category-defining athlete media ownership through a global entertainment company with four distinct content, storytelling and culture brands."
+LeBron James,philanthropy_social_institutions,98,High,CUL104;CUL105;CUL106,"An integrated institution-building model spanning public school, higher education, housing, health care, job training, financial literacy and support for more than 1,400 students."

@@ -1,3 +1,14 @@
 PLAYER_NAME,DATE,DIMENSION,SUBDIMENSION,EVENT,RAW_VALUE,UNIT,INFLATION_ADJUSTED_USD,BENEFICIARIES,GEOGRAPHY,SOURCE_ID,CONFIDENCE,NOTES
-Michael Jordan,,Commercial,Brand influence,,,,,,,SRC001,Medium,
-LeBron James,,Educational,Institution created,,,,,,,SRC002,Medium,
+Michael Jordan,2026-05-31,Commercial,Annual brand scale,Jordan Brand generated $7.034 billion in fiscal 2026 revenue.,7034,USD millions,,,Global,CUL001,High,Directly disclosed by Nike.
+Michael Jordan,2025-06-25,Commercial,Signature-line durability,Jordan Brand introduced the Air Jordan 40 four decades after the franchise began.,40,flagship model number,,,Global,CUL002,High,Evidence of multigenerational product durability.
+Michael Jordan,1992-08-08,Basketball culture,Globalization,Jordan was a central figure in the Dream Team era and the globalization of the NBA.,,,,,Global,CUL003;CUL004,High,League historical assessment.
+Michael Jordan,2020-05-21,Media,Documentary audience,The Last Dance averaged 12.876 million total viewers per episode.,12.876,million viewers per episode,,,United States,CUL005,High,"Includes original, DVR, re-air and internal on-demand viewing."
+Michael Jordan,2026-02-03,Philanthropy,Healthcare institutions,Jordan's Novant partnership includes four clinics and $27 million in gifts.,27,USD millions,,,North Carolina,CUL006,High,Durable healthcare infrastructure for underserved communities.
+Michael Jordan,2016-08-09,Philanthropy,Cultural institution,Jordan donated $5 million to the National Museum of African American History and Culture.,5,USD millions,,,United States,CUL007,High,Also donated a game-worn 1996 Finals jersey.
+LeBron James,2025-09-03,Commercial,Signature-line durability,Nike introduced LeBron XXIII after nearly a quarter-century of partnership.,23,signature model number,,,Global,CUL101,High,Collection launched globally after a China-first release.
+LeBron James,2025-09-03,Commercial,International activation,LeBron's 2025 tour marked his 15th China trip as a Nike signature athlete.,15,China tours,,,Global,CUL101,High,Demonstrates sustained international brand activation.
+LeBron James,2023-01-07,Basketball culture,International player influence,NBA coverage identifies LeBron as an influence on the next international generation.,,,,,Global,CUL102,Medium,Qualitative league assessment rather than a direct count.
+LeBron James,2020-01-01,Media,Platform ownership,"SpringHill operates four storytelling, entertainment and consulting brands.",4,brands,,,Global,CUL103,High,"SpringHill, UNINTERRUPTED, The Shop and The Robot Company."
+LeBron James,2026-08-03,Philanthropy,Student reach,"The I PROMISE program reports serving more than 1,400 Akron-area students.",1400,students,,1400,"Akron, Ohio",CUL104,High,Foundation-wide program reach.
+LeBron James,2025-04-21,Philanthropy,Public school,I PROMISE School reported 343 students with extensive family resources.,343,students,,343,"Akron, Ohio",CUL106,High,Public-school enrollment is a subset of the broader program.
+LeBron James,2026-08-03,Philanthropy,Institutional breadth,"The I PROMISE footprint spans education, housing, health, higher education and employment.",,,,,"Akron, Ohio",CUL105,High,Durable interconnected community infrastructure.

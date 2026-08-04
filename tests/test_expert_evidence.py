@@ -427,3 +427,72 @@ def test_rejected_claims_do_not_enter_consensus() -> None:
     )
 
     assert consensus.empty
+
+
+def test_validation_rejects_blank_source_family() -> None:
+    sources = pd.DataFrame(
+        [
+            _source(
+                "A1",
+                "",
+                "A",
+            )
+        ]
+    )
+
+    claims = pd.DataFrame(
+        [
+            _claim(
+                "C1",
+                "A1",
+                "Michael Jordan",
+            )
+        ]
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="SOURCE_FAMILY",
+    ):
+        validate_expert_evidence(
+            sources,
+            claims,
+            _dimensions(),
+        )
+
+
+def test_validation_rejects_non_https_url() -> None:
+    sources = pd.DataFrame(
+        [
+            _source(
+                "A1",
+                "Family A",
+                "A",
+            )
+        ]
+    )
+
+    sources.loc[
+        0,
+        "URL",
+    ] = "http://example.com/source"
+
+    claims = pd.DataFrame(
+        [
+            _claim(
+                "C1",
+                "A1",
+                "Michael Jordan",
+            )
+        ]
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="HTTPS",
+    ):
+        validate_expert_evidence(
+            sources,
+            claims,
+            _dimensions(),
+        )

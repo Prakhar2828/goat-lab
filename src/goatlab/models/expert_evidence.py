@@ -229,6 +229,68 @@ def validate_expert_evidence(
         "expert_analysis_dimensions",
     )
 
+    source_text_columns = [
+        "SOURCE_ID",
+        "SOURCE_FAMILY",
+        "ANALYST",
+        "PUBLICATION",
+        "TITLE",
+        "URL",
+        "SOURCE_TYPE",
+    ]
+
+    for column in source_text_columns:
+        normalized = (
+            sources[column]
+            .fillna("")
+            .astype(str)
+            .str.strip()
+        )
+
+        if normalized.eq("").any():
+            raise ValueError(
+                "expert_sources contains blank "
+                f"{column} values."
+            )
+
+    urls = (
+        sources["URL"]
+        .astype(str)
+        .str.strip()
+    )
+
+    invalid_urls = urls[
+        ~urls.str.startswith(
+            "https://"
+        )
+    ]
+
+    if not invalid_urls.empty:
+        raise ValueError(
+            "Expert source URLs must use HTTPS: "
+            f"{sorted(invalid_urls.unique())}"
+        )
+
+    publication_dates = pd.to_datetime(
+        sources["PUBLICATION_DATE"],
+        errors="coerce",
+    )
+
+    if publication_dates.isna().any():
+        invalid_dates = (
+            sources.loc[
+                publication_dates.isna(),
+                "PUBLICATION_DATE",
+            ]
+            .astype(str)
+            .tolist()
+        )
+
+        raise ValueError(
+            "Invalid expert-source publication dates: "
+            f"{invalid_dates}"
+        )
+
     for frame, identifier, label in [
         (
             sources,

@@ -5,6 +5,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from goatlab.data.playoff_rounds import add_canonical_playoff_rounds
 from goatlab.settings import settings
 
 
@@ -854,6 +855,11 @@ def build_playoff_series() -> pd.DataFrame:
             )
 
     result = pd.DataFrame(rows)
+
+    result = add_canonical_playoff_rounds(
+        result,
+    )
+
 
     if result.empty:
         raise ValueError(

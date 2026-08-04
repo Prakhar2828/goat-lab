@@ -8,6 +8,7 @@ from goatlab.features.era_adjust import (
     add_true_shooting,
     shrink_z_scores,
 )
+from goatlab.features.availability import add_schedule_availability
 from goatlab.settings import settings
 from goatlab.utils import (
     load_yaml,
@@ -288,6 +289,16 @@ def build_player_feature_table() -> pd.DataFrame:
             suffixes=("", "_BREF"),
         )
 
+    team_seasons = read_optional_parquet(
+        settings.interim_dir
+        / "league_team_seasons.parquet"
+    )
+
+    features = add_schedule_availability(
+        features,
+        team_seasons,
+    )
+
     player_config = load_yaml(
         "configs/sources.yaml"
     )["players"]
@@ -338,11 +349,6 @@ def build_player_feature_table() -> pd.DataFrame:
 
     # An 82-game denominator is valid only for regular seasons.
     # Playoff availability requires team playoff games and remains missing.
-    target_features["availability"] = np.where(
-        is_regular_season & (gp > 0),
-        np.minimum(gp / 82.0, 1.0),
-        np.nan,
-    )
 
     write_parquet(
         features,

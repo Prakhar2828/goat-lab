@@ -108,9 +108,12 @@ def _claim(
         "FILM_EXAMPLES_PRESENT": True,
         "SAMPLE_SIZE_DISCLOSED": True,
         "CONFIDENCE": 1.0,
-        "SUPPORTING_LOCATION": "Section 1",
+        "SUPPORTING_LOCATION": "Scouting Report — test supporting section",
         "SUMMARY": "Supported analytical claim.",
-        "LIMITATIONS": "",
+        "LIMITATIONS": (
+            "Single-source test claim with "
+            "limited external coverage."
+        ),
         "REVIEW_STATUS": status,
     }
 
@@ -494,5 +497,73 @@ def test_validation_rejects_non_https_url() -> None:
         validate_expert_evidence(
             sources,
             claims,
+            _dimensions(),
+        )
+
+
+def test_verified_claim_requires_supporting_location() -> None:
+    sources = pd.DataFrame(
+        [
+            _source(
+                "A1",
+                "Family A",
+                "A",
+            )
+        ]
+    )
+
+    claim = _claim(
+        "C1",
+        "A1",
+        "Michael Jordan",
+    )
+
+    claim[
+        "SUPPORTING_LOCATION"
+    ] = ""
+
+    with pytest.raises(
+        ValueError,
+        match="SUPPORTING_LOCATION",
+    ):
+        validate_expert_evidence(
+            sources,
+            pd.DataFrame(
+                [claim]
+            ),
+            _dimensions(),
+        )
+
+
+def test_claim_boolean_fields_are_validated() -> None:
+    sources = pd.DataFrame(
+        [
+            _source(
+                "A1",
+                "Family A",
+                "A",
+            )
+        ]
+    )
+
+    claim = _claim(
+        "C1",
+        "A1",
+        "Michael Jordan",
+    )
+
+    claim[
+        "FILM_EXAMPLES_PRESENT"
+    ] = "sometimes"
+
+    with pytest.raises(
+        ValueError,
+        match="FILM_EXAMPLES_PRESENT",
+    ):
+        validate_expert_evidence(
+            sources,
+            pd.DataFrame(
+                [claim]
+            ),
             _dimensions(),
         )

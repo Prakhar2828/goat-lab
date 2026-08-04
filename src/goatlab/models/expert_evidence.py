@@ -498,6 +498,84 @@ def validate_expert_evidence(
             "between 0 and 1."
         )
 
+    for boolean_column in [
+        "FILM_EXAMPLES_PRESENT",
+        "SAMPLE_SIZE_DISCLOSED",
+    ]:
+        if not claims.empty:
+            _coerce_bool(
+                claims[boolean_column],
+                boolean_column,
+            )
+
+    if not claims.empty:
+        player_names = set(
+            claims["PLAYER_NAME"]
+            .fillna("")
+            .astype(str)
+            .str.strip()
+        )
+
+        invalid_players = (
+            player_names
+            - set(TARGET_PLAYERS)
+        )
+
+        if invalid_players:
+            raise ValueError(
+                "Expert claims contain unsupported "
+                "players: "
+                f"{sorted(invalid_players)}"
+            )
+
+        normalized_status = (
+            claims["REVIEW_STATUS"]
+            .fillna("")
+            .astype(str)
+            .str.strip()
+            .str.casefold()
+        )
+
+        accepted_mask = (
+            normalized_status.isin(
+                ACCEPTED_REVIEW_STATUSES
+            )
+        )
+
+        accepted_requirements = {
+            "CAREER_PHASE": 3,
+            "SEASON_TYPE": 2,
+            "EVIDENCE_TYPE": 3,
+            "SUPPORTING_LOCATION": 12,
+            "SUMMARY": 20,
+            "LIMITATIONS": 20,
+        }
+
+        for column, minimum_length in (
+            accepted_requirements.items()
+        ):
+            values = (
+                claims.loc[
+                    accepted_mask,
+                    column,
+                ]
+                .fillna("")
+                .astype(str)
+                .str.strip()
+            )
+
+            invalid = values[
+                values.str.len().lt(
+                    minimum_length
+                )
+            ]
+
+            if not invalid.empty:
+                raise ValueError(
+                    "Accepted expert claims require "
+                    f"a substantive {column} value."
+                )
+
     available_dimensions = set(
         zip(
             dimensions["SIDE"]

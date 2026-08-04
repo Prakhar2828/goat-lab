@@ -3,6 +3,15 @@ from __future__ import annotations
 import argparse
 import json
 
+import pandas as pd
+
+from goatlab.data.expert_source_verification import (
+    ACCEPTED_REVIEW_STATUSES,
+    build_source_verification_blockers,
+    read_source_verifications,
+    validate_source_verifications,
+    validate_verified_claim_sources,
+)
 from goatlab.models.expert_evidence import (
     build_expert_consensus,
     build_expert_release_blockers,
@@ -50,10 +59,26 @@ def main() -> None:
         settings.manual_dir
     )
 
+    verifications = (
+        read_source_verifications(
+            settings.manual_dir
+        )
+    )
+
     validate_expert_evidence(
         sources,
         claims,
         dimensions,
+    )
+
+    validate_source_verifications(
+        sources,
+        verifications,
+    )
+
+    validate_verified_claim_sources(
+        claims,
+        verifications,
     )
 
     source_quality = (
@@ -70,7 +95,7 @@ def main() -> None:
         )
     )
 
-    blockers = (
+    evidence_blockers = (
         build_expert_release_blockers(
             sources,
             claims,
@@ -79,10 +104,37 @@ def main() -> None:
         )
     )
 
+    verification_blockers = (
+        build_source_verification_blockers(
+            sources,
+            verifications,
+        )
+    )
+
+    blockers = pd.concat(
+        [
+            verification_blockers,
+            evidence_blockers,
+        ],
+        ignore_index=True,
+    )
+
     write_parquet(
         source_quality,
         settings.processed_dir
         / "expert_source_quality.parquet",
+    )
+
+    write_parquet(
+        verifications,
+        settings.processed_dir
+        / "expert_source_verifications.parquet",
+    )
+
+    write_parquet(
+        verification_blockers,
+        settings.processed_dir
+        / "expert_source_verification_blockers.parquet",
     )
 
     write_parquet(
@@ -97,6 +149,21 @@ def main() -> None:
         / "expert_evidence_blockers.parquet",
     )
 
+    verified_sources = int(
+        verifications[
+            "REVIEW_STATUS"
+        ]
+        .astype(str)
+        .str.strip()
+        .str.casefold()
+        .isin(
+            ACCEPTED_REVIEW_STATUSES
+        )
+        .sum()
+        if not verifications.empty
+        else 0
+    )
+
     metadata = {
         "registered_sources": int(
             len(sources)
@@ -107,6 +174,12 @@ def main() -> None:
             ].nunique()
             if not sources.empty
             else 0
+        ),
+        "source_verification_rows": int(
+            len(verifications)
+        ),
+        "verified_sources": (
+            verified_sources
         ),
         "registered_claims": int(
             len(claims)
@@ -141,6 +214,11 @@ def main() -> None:
             ].sum()
             if not consensus.empty
             else 0
+        ),
+        "source_verification_blockers": int(
+            len(
+                verification_blockers
+            )
         ),
         "release_blockers": int(
             len(blockers)
@@ -182,6 +260,29 @@ def main() -> None:
                     "PUBLICATION",
                     "SOURCE_QUALITY_SCORE",
                     "SOURCE_TIER",
+                ]
+            ].to_string(
+                index=False
+            )
+        )
+
+    heading(
+        "SOURCE VERIFICATION"
+    )
+
+    if verifications.empty:
+        print(
+            "No source verification rows."
+        )
+    else:
+        print(
+            verifications[
+                [
+                    "SOURCE_ID",
+                    "FETCH_STATUS",
+                    "HTTP_STATUS",
+                    "AUTOMATED_STATUS",
+                    "REVIEW_STATUS",
                 ]
             ].to_string(
                 index=False
@@ -237,6 +338,10 @@ def main() -> None:
     for path in [
         settings.processed_dir
         / "expert_source_quality.parquet",
+        settings.processed_dir
+        / "expert_source_verifications.parquet",
+        settings.processed_dir
+        / "expert_source_verification_blockers.parquet",
         settings.processed_dir
         / "expert_film_consensus.parquet",
         settings.processed_dir

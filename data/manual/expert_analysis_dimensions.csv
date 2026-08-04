@@ -1,0 +1,33 @@
+SIDE,DIMENSION,DESCRIPTION,MIN_SOURCE_FAMILIES,MIN_TIER_A_FAMILIES,PRIMARY_ELIGIBLE,DEFAULT_WEIGHT
+offense,rim_pressure_finishing,Ability to reach and finish at the rim,3,1,true,1.0
+offense,half_court_creation,Ability to create efficient offense in set defenses,3,1,true,1.0
+offense,midrange_creation,Shot creation and efficiency from intermediate areas,3,1,true,1.0
+offense,shooting_gravity,Spacing and defensive attention created by shooting threat,3,1,true,1.0
+offense,post_scoring,Value created through post-ups and mismatch exploitation,3,1,true,1.0
+offense,passing_vision,Recognition of passing opportunities across the floor,3,1,true,1.0
+offense,passing_execution,Accuracy timing and difficulty of completed passes,3,1,true,1.0
+offense,advantage_creation,Ability to force rotations and create advantages for teammates,3,1,true,1.0
+offense,turnover_management,Decision quality and ball-security relative to offensive burden,3,1,true,1.0
+offense,transition_offense,Scoring and playmaking value before the defense is set,3,1,true,1.0
+offense,off_ball_value,Cutting movement relocation screening and secondary value,3,1,true,1.0
+offense,scalability,Ability to retain value beside other elite creators,3,1,true,1.0
+offense,playoff_resilience,Ability to maintain value against targeted playoff defenses,3,1,true,1.0
+offense,late_clock_creation,Ability to generate viable offense late in possessions,3,1,true,1.0
+offense,role_adaptability,Ability to change role and style across teams and career phases,3,1,true,1.0
+offense,offensive_portability,Ability to create value across different roster constructions,3,1,true,1.0
+defense,point_of_attack,Containment of primary ball handlers,3,1,true,1.0
+defense,screen_navigation,Ability to remain attached through and around screens,3,1,true,1.0
+defense,ball_denial,Ability to prevent or disrupt catches and preferred actions,3,1,true,1.0
+defense,help_positioning,Positioning away from the ball to prevent advantages,3,1,true,1.0
+defense,rotation_timing,Recognition and timing of defensive rotations,3,1,true,1.0
+defense,passing_lane_disruption,Anticipation and disruption without excessive gambling,3,1,true,1.0
+defense,rim_protection,Deterrence and contest value near the basket,3,1,true,1.0
+defense,switchability,Ability to defend different roles after switches,3,1,true,1.0
+defense,positional_versatility,Ability to defend multiple positions and assignments,3,1,true,1.0
+defense,transition_defense,Recognition effort and effectiveness before the defense is set,3,1,true,1.0
+defense,defensive_rebounding,Box-outs positioning and completion of defensive possessions,3,1,true,1.0
+defense,foul_discipline,Ability to defend without creating unnecessary fouls,3,1,true,1.0
+defense,communication_recognition,Recognition and organization of team defensive responsibilities,3,1,true,1.0
+defense,gambling_error_control,Balance between disruption attempts and resulting breakdowns,3,1,true,1.0
+defense,effort_consistency,Consistency of engagement across possessions and career phases,3,1,true,1.0
+defense,playoff_adaptability,Ability to execute changing assignments in playoff series,3,1,true,1.0

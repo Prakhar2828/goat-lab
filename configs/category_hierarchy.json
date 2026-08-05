@@ -1,0 +1,156 @@
+{
+  "version": "1.0",
+  "hierarchy_frozen": true,
+  "group_caps_frozen": true,
+  "production_weights_frozen": false,
+  "final_simulation_allowed": false,
+  "correlation_advisory_threshold": 0.8,
+  "minimum_reference_rows": 30,
+  "groups": [
+    {
+      "name": "performance_arc",
+      "display_name": "Performance Arc",
+      "cap": 0.5,
+      "categories": [
+        {
+          "name": "peak",
+          "within_group_weight": 0.25
+        },
+        {
+          "name": "prime",
+          "within_group_weight": 0.2
+        },
+        {
+          "name": "longevity",
+          "within_group_weight": 0.15
+        },
+        {
+          "name": "regular_season",
+          "within_group_weight": 0.2
+        },
+        {
+          "name": "playoffs",
+          "within_group_weight": 0.2
+        }
+      ]
+    },
+    {
+      "name": "basketball_value",
+      "display_name": "Basketball Value",
+      "cap": 0.4,
+      "categories": [
+        {
+          "name": "offense",
+          "within_group_weight": 0.45
+        },
+        {
+          "name": "defense",
+          "within_group_weight": 0.3
+        },
+        {
+          "name": "winning_context",
+          "within_group_weight": 0.25
+        }
+      ]
+    },
+    {
+      "name": "broader_legacy",
+      "display_name": "Broader Legacy",
+      "cap": 0.1,
+      "categories": [
+        {
+          "name": "cultural_impact",
+          "within_group_weight": 1.0
+        }
+      ]
+    }
+  ],
+  "reference_columns": {
+    "peak": "peak_raw",
+    "prime": "prime_raw",
+    "longevity": "longevity_raw",
+    "regular_season": "regular_season_raw",
+    "playoffs": "playoffs_raw",
+    "offense": "offense_raw",
+    "defense": "defense_raw"
+  },
+  "overlap_declarations": [
+    {
+      "categories": [
+        "peak",
+        "prime"
+      ],
+      "rationale": "Both summarize sustained high-end season value."
+    },
+    {
+      "categories": [
+        "peak",
+        "regular_season"
+      ],
+      "rationale": "Peak is derived from regular-season value."
+    },
+    {
+      "categories": [
+        "prime",
+        "regular_season"
+      ],
+      "rationale": "Prime is derived from consecutive regular-season value."
+    },
+    {
+      "categories": [
+        "longevity",
+        "regular_season"
+      ],
+      "rationale": "Career value above average accumulates regular-season production."
+    },
+    {
+      "categories": [
+        "peak",
+        "playoffs"
+      ],
+      "rationale": "Elite performance across season types shares player-value inputs."
+    },
+    {
+      "categories": [
+        "prime",
+        "playoffs"
+      ],
+      "rationale": "Prime and playoff quality share player-value inputs."
+    },
+    {
+      "categories": [
+        "offense",
+        "regular_season"
+      ],
+      "rationale": "Regular-season value includes offensive box-score families."
+    },
+    {
+      "categories": [
+        "offense",
+        "peak"
+      ],
+      "rationale": "Peak season value is strongly influenced by offense."
+    },
+    {
+      "categories": [
+        "offense",
+        "prime"
+      ],
+      "rationale": "Prime season value is strongly influenced by offense."
+    },
+    {
+      "categories": [
+        "defense",
+        "regular_season"
+      ],
+      "rationale": "Regular-season value includes defensive box evidence."
+    },
+    {
+      "categories": [
+        "playoffs",
+        "winning_context"
+      ],
+      "rationale": "Player playoff output and series context are related but distinct."
+    }
+  ]
+}

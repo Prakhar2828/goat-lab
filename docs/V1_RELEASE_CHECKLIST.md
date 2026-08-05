@@ -4,8 +4,8 @@
 
 - [x] Release scope frozen
 - [ ] Scaling frozen
-- [ ] Category hierarchy frozen
-- [ ] Double-counting audit passed
+- [x] Category hierarchy frozen
+- [x] Double-counting audit passed
 - [ ] Weights frozen
 - [ ] Uncertainty rules frozen
 - [ ] Sensitivity scenarios frozen

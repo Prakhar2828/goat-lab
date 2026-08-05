@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import pandas as pd
 import streamlit as st
-
 from common import page_header, plain_language_intro
 
 page_header(

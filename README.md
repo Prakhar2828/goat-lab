@@ -1,6 +1,6 @@
 # GOAT Lab — Michael Jordan vs. LeBron James
 
-> **Live interactive demo:** https://goat-lab-jordan-lebron.streamlit.app/  
+> **Live interactive demo:** https://goat-lab-jordan-lebron.streamlit.app/
 > **Plain-language dashboard guide:** [docs/DASHBOARD_GUIDE.md](docs/DASHBOARD_GUIDE.md)
 
 

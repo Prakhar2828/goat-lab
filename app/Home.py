@@ -3,7 +3,6 @@ from __future__ import annotations
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-
 from common import (
     friendly_category,
     load_parquet,
@@ -64,7 +63,7 @@ right.metric("LeBron-led stress-test setups", f"{lebron_rate:.1%}")
 
 st.markdown(
     f"""
-**LeBron James: {score_lookup.get('LeBron James', float('nan')):.3f}**  
+**LeBron James: {score_lookup.get('LeBron James', float('nan')):.3f}**
 **Michael Jordan: {score_lookup.get('Michael Jordan', float('nan')):.3f}**
 
 The score difference is only **{margin:.3f} points on a 100-point scale**, so the default
@@ -104,7 +103,7 @@ Only the priorities **inside** the first two sections changed. The three section
 always remained 50% / 40% / 10%. The published run used 250,000 samples, random seed 23,
 and a within-section concentration of 100.
 
-**My result** is the single published default setup.  
+**My result** is the single published default setup.
 **The stress-test result** asks how often each player leads when those internal priorities
 are changed in many reasonable ways.
 """

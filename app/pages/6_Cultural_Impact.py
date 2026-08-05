@@ -3,7 +3,6 @@ from __future__ import annotations
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-
 from common import (
     confidence_badge,
     load_parquet,

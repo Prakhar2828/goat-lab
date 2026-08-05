@@ -3,7 +3,6 @@ from __future__ import annotations
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-
 from common import (
     friendly_category,
     load_parquet,
@@ -12,6 +11,7 @@ from common import (
     plain_language_intro,
     require_data,
 )
+
 from goatlab.models.goat_score import score_players
 
 page_header(

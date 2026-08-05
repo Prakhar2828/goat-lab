@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import plotly.express as px
 import streamlit as st
-
 from common import load_parquet, page_header, plain_language_intro, require_data
 
 page_header(

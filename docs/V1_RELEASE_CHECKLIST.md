@@ -15,8 +15,8 @@
 - [x] Source registry implemented
 - [x] Source verification implemented
 - [x] Expert claims framework implemented
-- [ ] Awards integrated
-- [ ] Defense reliability integrated
+- [x] Awards integrated
+- [x] Defense reliability integrated
 - [ ] Impact metrics integrated
 - [ ] Supporting-cast context integrated
 - [ ] Game-level playoff analysis integrated

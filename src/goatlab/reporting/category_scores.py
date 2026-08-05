@@ -242,6 +242,38 @@ def _load_context_scores(target: pd.DataFrame) -> pd.DataFrame:
             ]
         )
 
+    defense_evidence = read_optional_parquet(
+        settings.processed_dir
+        / "defense_evidence_scores.parquet"
+    )
+
+    defense_columns = [
+        column
+        for column in [
+            "defense_film_score",
+            "defense_awards_score",
+        ]
+        if column in defense_evidence.columns
+    ]
+
+    if (
+        not defense_evidence.empty
+        and "PLAYER_NAME"
+        in defense_evidence.columns
+        and defense_columns
+    ):
+        result = result.merge(
+            defense_evidence[
+                [
+                    "PLAYER_NAME",
+                    *defense_columns,
+                ]
+            ],
+            on="PLAYER_NAME",
+            how="left",
+            validate="one_to_one",
+        )
+
     manual_path = settings.manual_dir / "manual_category_inputs.csv"
     if manual_path.exists():
         manual = pd.read_csv(manual_path)
@@ -252,31 +284,37 @@ def _load_context_scores(target: pd.DataFrame) -> pd.DataFrame:
             suffixes=("", "_manual"),
         )
 
-        for column in ["winning_context_raw", "cultural_impact_raw"]:
+        override_columns = [
+            "winning_context_raw",
+            "cultural_impact_raw",
+            "defense_film_score",
+            "defense_awards_score",
+        ]
+
+        for column in override_columns:
             manual_column = f"{column}_manual"
-            if manual_column in result.columns:
-                result[column] = result[manual_column].combine_first(
+            if manual_column not in result.columns:
+                continue
+
+            if column not in result.columns:
+                result[column] = np.nan
+
+            result[column] = (
+                result[manual_column]
+                .combine_first(
                     result[column]
                 )
+            )
 
         result = result.drop(
             columns=[
                 column
                 for column in result.columns
-                if column.endswith("_manual")
-                and column
-                not in {
-                    "defense_film_score_manual",
-                    "defense_awards_score_manual",
-                }
+                if column.endswith(
+                    "_manual"
+                )
             ],
             errors="ignore",
-        )
-        result = result.rename(
-            columns={
-                "defense_film_score_manual": "defense_film_score",
-                "defense_awards_score_manual": "defense_awards_score",
-            }
         )
 
     return result

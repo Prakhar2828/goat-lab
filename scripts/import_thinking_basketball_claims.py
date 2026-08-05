@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from pathlib import Path
-
 import pandas as pd
 
 from goatlab.data.expert_source_verification import (
@@ -13,7 +11,6 @@ from goatlab.models.expert_evidence import (
     validate_expert_evidence,
 )
 from goatlab.settings import settings
-
 
 OUTPUT_PATH = (
     settings.manual_dir

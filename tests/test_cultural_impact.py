@@ -9,7 +9,6 @@ from goatlab.models.cultural_impact import (
     combine_cultural_scores,
 )
 
-
 DIMENSIONS = [
     "commercial_global_reach",
     "basketball_culture_influence",

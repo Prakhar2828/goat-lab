@@ -5,7 +5,6 @@ import re
 import numpy as np
 import pandas as pd
 
-
 ROUND_NAMES = {
     1: "First Round",
     2: "Conference Semifinals",

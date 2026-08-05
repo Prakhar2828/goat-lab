@@ -9,12 +9,12 @@ consensus rows are already marked PRIMARY_MODEL_ELIGIBLE.
 from __future__ import annotations
 
 import json
+from collections.abc import Mapping
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 import numpy as np
 import pandas as pd
-
 
 CATEGORIES: tuple[str, ...] = (
     "peak",
@@ -189,7 +189,7 @@ def summarize_expert_diagnostics(
             {
                 "PLAYER_NAME": str(player),
                 "SIDE": str(side),
-                "CONSENSUS_ROWS": int(len(group)),
+                "CONSENSUS_ROWS": len(group),
                 "DIMENSIONS": int(
                     group["DIMENSION"].nunique()
                 ),
@@ -400,7 +400,7 @@ def build_category_uncertainty(
                     player_name=player_name,
                     side=side,
                 )
-                expert_primary_rows = int(len(eligible))
+                expert_primary_rows = len(eligible)
 
                 if not eligible.empty:
                     expert_source_families = int(
@@ -484,7 +484,7 @@ def build_uncertainty_audit_metadata(
         "categories": int(
             uncertainty["CATEGORY"].nunique()
         ),
-        "uncertainty_rows": int(len(uncertainty)),
+        "uncertainty_rows": len(uncertainty),
         "uncertainty_rules_frozen": bool(
             config["uncertainty_rules_frozen"]
         ),

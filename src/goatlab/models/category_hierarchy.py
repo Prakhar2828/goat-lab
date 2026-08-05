@@ -1,13 +1,12 @@
 from __future__ import annotations
 
-from itertools import combinations
 import json
+from itertools import combinations
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 import pandas as pd
-
 
 CATEGORIES = (
     "peak",
@@ -252,7 +251,7 @@ def build_overlap_audit(
             errors="coerce",
         ).dropna()
 
-        sample_size = int(len(pair))
+        sample_size = len(pair)
         correlation = (
             float(pair[column_a].corr(pair[column_b], method="spearman"))
             if sample_size >= 2

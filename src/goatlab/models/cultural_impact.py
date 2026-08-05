@@ -1,7 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import Mapping
 from pathlib import Path
-from typing import Mapping
 
 import numpy as np
 import pandas as pd
@@ -12,7 +12,6 @@ from goatlab.utils import (
     read_optional_parquet,
     write_parquet,
 )
-
 
 DEFAULT_ATTENTION_COMPONENTS = {
     "total_view_share": 0.50,

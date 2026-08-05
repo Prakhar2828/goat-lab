@@ -2,18 +2,37 @@ from __future__ import annotations
 
 import plotly.express as px
 import streamlit as st
+from common import confidence_badge, load_parquet, page_header, require_data
 
-from common import confidence_badge, load_parquet, page_header
+page_header(
+    "Team, teammate, and winning context",
+    "Separate individual production from the conditions surrounding team outcomes.",
+)
 
-page_header("Team, teammate, and winning context", "Distinguish individual value from roster quality and team outcomes.")
+scores = load_parquet("production_category_scores.parquet")
 series = load_parquet("playoff_series_scored.parquet")
-team_srs = load_parquet("team_srs.parquet")
+require_data(scores)
 
-if not team_srs.empty:
-    figure = px.line(team_srs, x="SEASON", y="SRS_EST", color="TEAM_ID", title="Estimated team strength by season")
-    st.plotly_chart(figure, use_container_width=True)
-else:
-    st.warning("Team SRS data has not been built.")
+context = scores[["PLAYER_NAME", "winning_context"]].copy()
+context["CATEGORY"] = "Winning context"
+
+figure = px.bar(
+    context,
+    x="PLAYER_NAME",
+    y="winning_context",
+    color="PLAYER_NAME",
+    range_y=[0, 100],
+    title="Frozen winning-context score",
+)
+st.plotly_chart(figure, use_container_width=True)
+
+st.markdown(
+    """
+The winning-context category uses expected playoff-series outcomes to compare actual
+team results with pre-series expectations. It is intentionally limited: the model does
+not assign all team overperformance to one player.
+"""
+)
 
 if not series.empty:
     columns = [
@@ -30,9 +49,16 @@ if not series.empty:
         ]
         if column in series.columns
     ]
-    st.dataframe(series[columns], use_container_width=True, hide_index=True)
+    if columns:
+        st.subheader("Playoff-series evidence")
+        st.dataframe(
+            series[columns],
+            use_container_width=True,
+            hide_index=True,
+        )
 
 confidence_badge(
     "Medium",
-    "Team context can be estimated, but coaching, injuries, role fit, and roster changes are only partially observable.",
+    "Opponent strength and series outcomes are modeled broadly, while coaching, "
+    "injuries, role fit, and historical teammate detail remain only partially observable.",
 )

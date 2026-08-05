@@ -11,7 +11,6 @@ from goatlab.models.final_model import (
     validate_final_model_config,
 )
 
-
 CATEGORIES = (
     "peak",
     "prime",

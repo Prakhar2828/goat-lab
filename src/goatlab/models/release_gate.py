@@ -268,9 +268,7 @@ def evaluate_v1_release_gate(
                 "production_scores_valid",
                 True,
                 value={
-                    "rows": int(
-                        len(production_scores)
-                    ),
+                    "rows": len(production_scores),
                     "players": sorted(
                         production_scores[
                             "PLAYER_NAME"
@@ -332,7 +330,7 @@ def evaluate_v1_release_gate(
     metadata = {
         "release_blockers": blocker_count,
         "advisory_failures": advisory_failures,
-        "checks": int(len(checks_frame)),
+        "checks": len(checks_frame),
         "passed_checks": int(
             checks_frame["PASSED"].sum()
         ),

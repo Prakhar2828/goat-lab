@@ -83,3 +83,18 @@ Career summaries for players with at least five regular seasons and 5,000 minute
 | WIN_RATE | Share of sampled value systems won |
 | MEAN_SCORE | Average weighted score across simulations |
 | P05_SCORE/P95_SCORE | Weight-system score interval |
+
+## Public v1 dashboard package
+
+The immutable Streamlit release reads publication-safe files from
+`release/dashboard_data/` before falling back to local `data/processed/` outputs.
+
+- `production_category_scores.parquet` — frozen nine-category production scores
+- `production_hierarchy_scores.parquet` — frozen total GOAT scores and ranks
+- `weight_simulation_summary.parquet` — 250,000-run win rates and score intervals
+- `weight_simulation_drivers.parquet` — category-weight correlations with the margin
+- `hierarchy_weight_simulation_group_audit.parquet` — realized group-cap validation
+- `v1_release_gate.json` — 32-check frozen release-gate metadata
+- `goat_player_season_values.parquet` — publication career-curve data
+- `peak_prime_longevity.parquet` — publication peak/prime/longevity summaries
+- `playoff_series_scored.parquet` — publication playoff-series context

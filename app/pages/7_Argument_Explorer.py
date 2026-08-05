@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import pandas as pd
 import streamlit as st
-
 from common import page_header
 
 page_header("Argument explorer", "The strongest version of every major argument, its counterargument, evidence, and verdict.")

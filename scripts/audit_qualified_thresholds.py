@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 df = pd.read_parquet(
     "data/processed/league_player_season_values.parquet"
 )

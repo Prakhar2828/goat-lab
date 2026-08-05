@@ -1,11 +1,10 @@
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import Iterable
 
 import numpy as np
 import pandas as pd
-
 
 TARGET_PLAYERS = {
     893: "Michael Jordan",
@@ -359,9 +358,7 @@ def build_awards_scores(
                         0,
                     )
                 ),
-                "DEFENSIVE_AWARD_ROWS": int(
-                    len(selected)
-                ),
+                "DEFENSIVE_AWARD_ROWS": len(selected),
                 "DEFENSIVE_AWARD_POINTS": (
                     total_points
                 ),
@@ -494,18 +491,14 @@ def build_film_diagnostics(
         rows.append(
             {
                 "PLAYER_NAME": player_name,
-                "DEFENSE_FILM_ROWS": int(
-                    len(selected)
-                ),
+                "DEFENSE_FILM_ROWS": len(selected),
                 "DEFENSE_FILM_DIMENSIONS": (
                     unique_dimensions
                 ),
                 "DEFENSE_FILM_SOURCE_FAMILIES": (
                     source_families
                 ),
-                "DEFENSE_FILM_PRIMARY_ROWS": int(
-                    len(primary)
-                ),
+                "DEFENSE_FILM_PRIMARY_ROWS": len(primary),
                 "DEFENSE_FILM_COVERAGE": float(
                     min(
                         unique_dimensions

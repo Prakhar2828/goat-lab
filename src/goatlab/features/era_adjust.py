@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 from scipy.stats import percentileofscore
 
-
 HIGHER_IS_BETTER = {
     "PTS": True,
     "AST": True,
@@ -65,9 +64,14 @@ def add_relative_metrics(
             direction = 1 if HIGHER_IS_BETTER.get(metric, True) else -1
             group[f"{metric}_REL"] = direction * (values - mean)
             group[f"{metric}_Z"] = direction * ((values - mean) / std if std > 0 else np.nan)
+            reference_values = values[valid]
             group[f"{metric}_PCTL"] = values.apply(
-                lambda value: (
-                    percentileofscore(values[valid], value, kind="rank")
+                lambda value, reference_values=reference_values: (
+                    percentileofscore(
+                        reference_values,
+                        value,
+                        kind="rank",
+                    )
                     if pd.notna(value)
                     else np.nan
                 )

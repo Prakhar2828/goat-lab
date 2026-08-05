@@ -7,7 +7,6 @@ from goatlab.models.expert_evidence import (
 )
 from goatlab.settings import settings
 
-
 OUTPUT_PATH = (
     settings.manual_dir
     / "expert_claims.csv"

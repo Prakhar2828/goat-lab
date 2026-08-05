@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 
-import numpy as np
 import pandas as pd
 import pytest
 
@@ -17,7 +16,6 @@ from goatlab.models.cultural_impact_sensitivity import (
     load_policy,
     write_cultural_sensitivity_outputs,
 )
-
 
 DIMENSIONS = (
     "commercial_global_reach",

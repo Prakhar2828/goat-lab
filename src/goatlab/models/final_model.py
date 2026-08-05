@@ -15,7 +15,6 @@ from goatlab.models.category_scaling import (
     transform_percentile_scores,
 )
 
-
 TARGET_PLAYERS = ("LeBron James", "Michael Jordan")
 
 

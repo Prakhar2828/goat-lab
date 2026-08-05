@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import plotly.express as px
 import streamlit as st
-
 from common import confidence_badge, load_parquet, page_header, require_data
 
 page_header("Playoffs and opponent quality", "Production, opponent strength, expected series outcomes, and overperformance.")

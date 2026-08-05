@@ -4,19 +4,19 @@ import hashlib
 import json
 import re
 import unicodedata
+from collections.abc import Mapping
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from difflib import SequenceMatcher
 from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, urlparse
 from urllib.request import Request, urlopen
 
 import pandas as pd
-
 
 VERIFICATION_COLUMNS = [
     "SOURCE_ID",
@@ -1098,7 +1098,7 @@ def build_verification_record(
         "CHECKED_AT": (
             checked_at
             or datetime.now(
-                timezone.utc
+                UTC
             ).isoformat()
         ),
         "FETCH_METHOD": (

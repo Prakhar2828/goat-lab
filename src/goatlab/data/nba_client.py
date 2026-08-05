@@ -2,15 +2,15 @@ from __future__ import annotations
 
 import json
 import time
+from collections.abc import Callable
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 import pandas as pd
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential_jitter
 
 from goatlab.settings import settings
 from goatlab.utils import stable_hash
-
 
 NBA_STATS_HEADERS: dict[str, str] = {
     "Accept": "application/json, text/plain, */*",

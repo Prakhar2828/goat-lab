@@ -1,12 +1,11 @@
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
 
 import numpy as np
 import pandas as pd
-
 
 TARGET_PLAYERS = ("Michael Jordan", "LeBron James")
 
@@ -504,13 +503,13 @@ def summarize_player_games(frame: pd.DataFrame) -> pd.DataFrame:
                 "STOCKS_PER36": float(pd.to_numeric(group["STOCKS_PER36"], errors="coerce").mean()),
                 "TURNOVERS_PER36": float(pd.to_numeric(group["TURNOVERS_PER36"], errors="coerce").mean()),
                 "PLUS_MINUS_PER_GAME": float(pd.to_numeric(group["PLUS_MINUS"], errors="coerce").mean()),
-                "ELIMINATION_GAMES": int(len(elimination)),
+                "ELIMINATION_GAMES": len(elimination),
                 "ELIMINATION_GAME_SCORE": float(pd.to_numeric(elimination["GAME_SCORE"], errors="coerce").mean()),
                 "ELIMINATION_WINS": int(pd.to_numeric(elimination["WIN"], errors="coerce").sum()),
-                "CLOSEOUT_OPPORTUNITIES": int(len(closeout)),
+                "CLOSEOUT_OPPORTUNITIES": len(closeout),
                 "CLOSEOUT_GAME_SCORE": float(pd.to_numeric(closeout["GAME_SCORE"], errors="coerce").mean()),
                 "CLOSEOUT_WINS": int(pd.to_numeric(closeout["WIN"], errors="coerce").sum()),
-                "GAME_SEVENS": int(len(game_seven)),
+                "GAME_SEVENS": len(game_seven),
                 "GAME_SEVEN_GAME_SCORE": float(pd.to_numeric(game_seven["GAME_SCORE"], errors="coerce").mean()),
                 "ADDITIONAL_CENTRAL_WEIGHT": 0.0,
                 "PRIMARY_MODEL_ELIGIBLE": False,
@@ -579,7 +578,7 @@ def core_stat_coverage(frame: pd.DataFrame) -> pd.DataFrame:
     for player, group in frame.groupby("PLAYER_NAME", sort=True):
         for column in CORE_STAT_COLUMNS:
             observed = int(group[column].notna().sum())
-            total = int(len(group))
+            total = len(group)
             rows.append(
                 {
                     "PLAYER_NAME": player,

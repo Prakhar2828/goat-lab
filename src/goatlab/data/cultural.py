@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import date
+from datetime import UTC, datetime
 from pathlib import Path
 from urllib.parse import quote
 
@@ -9,7 +9,6 @@ import requests
 
 from goatlab.settings import settings
 from goatlab.utils import write_parquet
-
 
 WIKIMEDIA_ENDPOINT = (
     "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/"
@@ -22,7 +21,7 @@ def fetch_wikimedia_pageviews(
     start: str = "20150701",
     end: str | None = None,
 ) -> pd.DataFrame:
-    end = end or date.today().strftime("%Y%m%d")
+    end = end or datetime.now(UTC).date().strftime("%Y%m%d")
     url = WIKIMEDIA_ENDPOINT.format(article=quote(article, safe=""), start=start, end=end)
     response = requests.get(
         url,

@@ -5,7 +5,6 @@ from collections.abc import Mapping
 import numpy as np
 import pandas as pd
 
-
 DEFAULT_SCHEDULE_GAMES = 82
 
 SEASON_LENGTH_OVERRIDES: Mapping[

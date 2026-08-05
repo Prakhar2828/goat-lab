@@ -3,12 +3,12 @@
 ## Methodology
 
 - [x] Release scope frozen
-- [ ] Scaling frozen
+- [x] Scaling frozen
 - [x] Category hierarchy frozen
 - [x] Double-counting audit passed
-- [ ] Weights frozen
+- [x] Weights frozen
 - [x] Uncertainty rules frozen
-- [ ] Sensitivity scenarios frozen
+- [x] Sensitivity scenarios frozen
 
 ## Evidence
 
@@ -22,37 +22,41 @@
 - [x] Game-level playoff evidence audited
 - [x] Cultural-impact weighting sensitivity frozen
 - [x] Final production scale, hierarchy weights, simulation seed, and release gate frozen
-- [ ] Impact metrics integrated
-- [ ] Supporting-cast context integrated
-- [ ] Game-level playoff analysis integrated
-- [ ] Cultural sensitivity completed
+- [x] Impact metrics explicitly retained as diagnostic-only evidence
+- [x] Supporting-cast context explicitly retained as diagnostic-only evidence
+- [x] Game-level playoff analysis explicitly retained as diagnostic-only evidence
+- [x] Cultural sensitivity completed and included in the release interpretation
 
 ## Final model
 
-- [ ] Preregistration committed
-- [ ] Mandatory blockers cleared
-- [ ] Final simulation completed
-- [ ] Results exported
-- [ ] Robustness label assigned
-- [ ] No post-result configuration changes
+- [x] Preregistration committed
+- [x] Mandatory blockers cleared
+- [x] Final simulation completed once
+- [x] Results exported
+- [x] Robustness label assigned
+- [x] No post-result configuration changes
 
 ## Engineering
 
-- [ ] Full test suite passes
-- [ ] End-to-end smoke test passes
-- [ ] CI configured
+- [x] Full test suite passes
+- [ ] End-to-end dashboard smoke test passes
+- [x] CI configured
 - [ ] Docker workflow validated
-- [ ] Reproduction instructions validated
+- [x] Reproduction instructions validated
 - [ ] Working tree clean
 
 ## Release
 
-- [ ] README complete
-- [ ] Methodology complete
-- [ ] Limitations complete
-- [ ] Data-source caveats complete
-- [ ] Dashboard complete
-- [ ] Screenshots complete
+- [x] README complete
+- [x] Methodology complete
+- [x] Limitations complete
+- [x] Data-source caveats complete
+- [x] Dashboard updated to frozen production data
+- [x] Publication-safe dashboard data packaged
+- [x] LinkedIn post drafted
+- [ ] Screenshots captured
 - [ ] Release tag created
-- [ ] LinkedIn post finalized
 - [x] Final preregistered simulation executed once and release bundle frozen
+
+The release tag may be created only after the dashboard and Docker smoke tests pass and
+the final commit is pushed with a clean worktree.

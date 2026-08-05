@@ -22,7 +22,6 @@ from goatlab.models.expert_evidence import (
 from goatlab.settings import settings
 from goatlab.utils import write_parquet
 
-
 LINE = "=" * 100
 
 
@@ -165,9 +164,7 @@ def main() -> None:
     )
 
     metadata = {
-        "registered_sources": int(
-            len(sources)
-        ),
+        "registered_sources": len(sources),
         "registered_source_families": int(
             sources[
                 "SOURCE_FAMILY"
@@ -175,15 +172,11 @@ def main() -> None:
             if not sources.empty
             else 0
         ),
-        "source_verification_rows": int(
-            len(verifications)
-        ),
+        "source_verification_rows": len(verifications),
         "verified_sources": (
             verified_sources
         ),
-        "registered_claims": int(
-            len(claims)
-        ),
+        "registered_claims": len(claims),
         "verified_claims": int(
             claims[
                 "REVIEW_STATUS"
@@ -205,9 +198,7 @@ def main() -> None:
             if not claims.empty
             else 0
         ),
-        "consensus_rows": int(
-            len(consensus)
-        ),
+        "consensus_rows": len(consensus),
         "primary_eligible_rows": int(
             consensus[
                 "PRIMARY_MODEL_ELIGIBLE"
@@ -215,14 +206,10 @@ def main() -> None:
             if not consensus.empty
             else 0
         ),
-        "source_verification_blockers": int(
-            len(
+        "source_verification_blockers": len(
                 verification_blockers
-            )
-        ),
-        "release_blockers": int(
-            len(blockers)
-        ),
+            ),
+        "release_blockers": len(blockers),
         "release_ready": bool(
             blockers.empty
         ),

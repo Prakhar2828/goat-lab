@@ -2,8 +2,6 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import pandas as pd
-
 from goatlab.data.expert_source_verification import (
     read_source_verifications,
     validate_verified_claim_sources,
@@ -13,7 +11,6 @@ from goatlab.models.expert_evidence import (
     validate_expert_evidence,
 )
 from goatlab.settings import settings
-
 
 OUTPUT_PATH = Path(
     "docs/EXPERT_CLAIM_REGISTER.md"
@@ -84,12 +81,12 @@ def main() -> None:
     lines = [
         "# Expert Claim Register",
         "",
-        "This register contains claim-level summaries "
-        "of published expert analysis.",
+        ("This register contains claim-level summaries "
+        "of published expert analysis."),
         "",
-        "It stores paraphrased analytical findings, "
+        ("It stores paraphrased analytical findings, "
         "supporting locations, confidence, and limitations. "
-        "It does not reproduce source articles or video.",
+        "It does not reproduce source articles or video."),
         "",
         "## Summary",
         "",
@@ -102,12 +99,12 @@ def main() -> None:
             else "- Source families represented: 0"
         ),
         "",
-        "The Thinking Basketball anchor profiles are "
+        ("The Thinking Basketball anchor profiles are "
         "partial-career sources. Their claims use "
         "`career_through_1998` and `career_through_2018`, "
         "not `career`. They are therefore display and "
         "diagnostic evidence only until broader independent "
-        "coverage is added.",
+        "coverage is added."),
         "",
         "## Claims by player and side",
         "",
@@ -180,12 +177,12 @@ def main() -> None:
             "",
             "## Interpretation",
             "",
-            "A registered claim is evidence attributed to "
+            ("A registered claim is evidence attributed to "
             "one source family. It is not equivalent to "
-            "multi-source consensus.",
+            "multi-source consensus."),
             "",
-            "No partial-career claim is eligible for the "
-            "primary model.",
+            ("No partial-career claim is eligible for the "
+            "primary model."),
             "",
         ]
     )

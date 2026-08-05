@@ -12,6 +12,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: pip
       - run: pip install -e '.[dev]'
-      - run: ruff check src tests app
+      - run: ruff check src tests app scripts
       - run: pytest -q
+      - run: python scripts/verify_public_release.py
+      - run: python scripts/build_release_assets.py --verify
+      - run: find app -type f -name '*.py' -print0 | xargs -0 python -m py_compile

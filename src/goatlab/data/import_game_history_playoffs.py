@@ -8,7 +8,6 @@ import pandas as pd
 from goatlab.settings import settings
 from goatlab.utils import write_parquet
 
-
 SOURCE_DIR = Path("data/external/nba_game_history")
 
 START_END_YEAR = 1985

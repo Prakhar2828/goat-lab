@@ -7,7 +7,6 @@ from typing import Any
 
 import pandas as pd
 
-
 TARGET_PLAYERS = ("LeBron James", "Michael Jordan")
 
 FINAL_ARTIFACT_PATHS = (
@@ -481,8 +480,8 @@ def render_results_markdown(manifest: dict[str, Any]) -> str:
             "of sampled value systems."
         ),
         "",
-        "> This is a conditional model result, not an objective probability "
-        "that either player is the GOAT.",
+        ("> This is a conditional model result, not an objective probability "
+        "that either player is the GOAT."),
         "",
         "## Frozen central result",
         "",
@@ -517,9 +516,9 @@ def render_results_markdown(manifest: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
-            "The win rate is the share of frozen-cap, within-group weight "
+            ("The win rate is the share of frozen-cap, within-group weight "
             "systems won. Group mass remains exactly 50% Performance Arc, "
-            "40% Basketball Value, and 10% Broader Legacy.",
+            "40% Basketball Value, and 10% Broader Legacy."),
             "",
             "## Scale sensitivity",
             "",
@@ -574,8 +573,8 @@ def render_results_markdown(manifest: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
-            "Defense is the strongest swing factor, while offense is the "
-            "largest counterweight favoring LeBron.",
+            ("Defense is the strongest swing factor, while offense is the "
+            "largest counterweight favoring LeBron."),
             "",
             "## Evidence treatment and limitations",
             "",

@@ -4,13 +4,11 @@ from collections.abc import Mapping
 
 import numpy as np
 import pandas as pd
-from scipy.stats import norm
-from scipy.stats import percentileofscore
+from scipy.stats import norm, percentileofscore
 
 from goatlab.models.peak_prime import (
     summarize_peak_prime_longevity,
 )
-
 
 CATEGORIES = (
     "peak",
@@ -341,9 +339,7 @@ def build_winning_context_sensitivity(
                     "SCENARIO": (
                         scenario_name
                     ),
-                    "SERIES": int(
-                        len(group)
-                    ),
+                    "SERIES": len(group),
                     "SERIES_WINS": int(
                         group[
                             "TEAM_WON_SERIES"
@@ -785,9 +781,7 @@ def build_availability_sensitivity(
                         "CATEGORY": category,
                         "RAW_VALUE": raw_value,
                         "SCORE": score,
-                        "REFERENCE_SIZE": int(
-                            len(reference)
-                        ),
+                        "REFERENCE_SIZE": len(reference),
                     }
                 )
 

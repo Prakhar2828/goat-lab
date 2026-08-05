@@ -11,7 +11,6 @@ from goatlab.models.expert_evidence import (
 )
 from goatlab.settings import settings
 
-
 OUTPUT_PATH = Path(
     "docs/EXPERT_SOURCE_REGISTER.md"
 )
@@ -141,18 +140,18 @@ def main() -> None:
     lines = [
         "# Expert Source Register",
         "",
-        "This register contains sources reviewed for the "
-        "GOAT Lab Expert Film Consensus component.",
+        ("This register contains sources reviewed for the "
+        "GOAT Lab Expert Film Consensus component."),
         "",
-        "Registration does not mean that every statement "
+        ("Registration does not mean that every statement "
         "from a source is accepted. Claims are admitted "
         "separately and must identify a supporting location, "
-        "confidence, limitation, and review status.",
+        "confidence, limitation, and review status."),
         "",
-        "Multiple documents from the same analyst or "
+        ("Multiple documents from the same analyst or "
         "methodological project share one `SOURCE_FAMILY`. "
         "They are collapsed before consensus so publishing "
-        "more articles cannot create artificial independence.",
+        "more articles cannot create artificial independence."),
         "",
         "## Registry summary",
         "",
@@ -233,13 +232,13 @@ def main() -> None:
             "- Tier B sources may corroborate or qualify evidence.",
             "- Tier C sources are contextual and cannot anchor a dimension.",
             "- Excluded sources do not enter consensus.",
-            "- A source tier measures evidence quality, not whether "
-            "the source favors either player.",
+            ("- A source tier measures evidence quality, not whether "
+            "the source favors either player."),
             "",
             "## Current status",
             "",
-            "The source registry is populated. Player claims and "
-            "dimension-level consensus remain separate release gates.",
+            ("The source registry is populated. Player claims and "
+            "dimension-level consensus remain separate release gates."),
             "",
         ]
     )

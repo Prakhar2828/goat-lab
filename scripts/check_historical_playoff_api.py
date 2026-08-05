@@ -5,7 +5,6 @@ from goatlab.data.nba_client import (
     patch_nba_api_headers,
 )
 
-
 patch_nba_api_headers()
 
 

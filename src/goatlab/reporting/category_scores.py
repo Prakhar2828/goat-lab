@@ -12,7 +12,6 @@ from goatlab.models.season_value import add_transparent_season_value
 from goatlab.settings import settings
 from goatlab.utils import load_yaml, read_optional_parquet, write_parquet
 
-
 CATEGORIES = [
     "peak",
     "prime",
@@ -369,9 +368,11 @@ def build_category_scores() -> pd.DataFrame:
 
     for category, raw_column in reference_columns.items():
         target[category] = target[raw_column].apply(
-            lambda value: _to_reference_percentile(
-                value,
-                reference[raw_column],
+            lambda value, reference_values=reference[raw_column]: (
+                _to_reference_percentile(
+                    value,
+                    reference_values,
+                )
             )
         )
 

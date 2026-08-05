@@ -1,14 +1,13 @@
 from __future__ import annotations
 
-import numpy as np
 import pandas as pd
 
+from goatlab.features.availability import add_schedule_availability
 from goatlab.features.era_adjust import (
     add_relative_metrics,
     add_true_shooting,
     shrink_z_scores,
 )
-from goatlab.features.availability import add_schedule_availability
 from goatlab.settings import settings
 from goatlab.utils import (
     load_yaml,
@@ -337,15 +336,11 @@ def build_player_feature_table() -> pd.DataFrame:
         + 1
     ).astype("Int64")
 
-    gp = pd.to_numeric(
+    pd.to_numeric(
         target_features["GP"],
         errors="coerce",
     )
 
-    is_regular_season = (
-        target_features["SEASON_TYPE"]
-        == "Regular Season"
-    )
 
     # An 82-game denominator is valid only for regular seasons.
     # Playoff availability requires team playoff games and remains missing.

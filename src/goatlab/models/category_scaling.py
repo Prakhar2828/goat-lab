@@ -6,7 +6,6 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm, percentileofscore
 
-
 REFERENCE_CATEGORIES: Mapping[str, str] = {
     "peak": "peak_raw",
     "prime": "prime_raw",
@@ -677,9 +676,7 @@ def build_saturation_audit(
                 "CATEGORY": str(
                     category
                 ),
-                "PLAYER_COUNT": int(
-                    len(scores)
-                ),
+                "PLAYER_COUNT": len(scores),
                 "MIN_SCORE": float(
                     scores.min()
                 ),

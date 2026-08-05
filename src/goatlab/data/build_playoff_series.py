@@ -8,7 +8,6 @@ import pandas as pd
 from goatlab.data.playoff_rounds import add_canonical_playoff_rounds
 from goatlab.settings import settings
 
-
 SOURCE_DIR = Path("data/external/nba_game_history")
 START_SEASON_YEAR = 1984
 
@@ -798,9 +797,7 @@ def build_playoff_series() -> pd.DataFrame:
                     "OPP_SERIES_WINS": (
                         opponent_wins
                     ),
-                    "SERIES_GAMES": int(
-                        len(series_games)
-                    ),
+                    "SERIES_GAMES": len(series_games),
                     "HOME_COURT": int(
                         game_one_home
                         == team_id

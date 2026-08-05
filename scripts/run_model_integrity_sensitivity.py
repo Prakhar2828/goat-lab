@@ -14,7 +14,6 @@ from goatlab.utils import (
     write_parquet,
 )
 
-
 LINE = "=" * 100
 
 

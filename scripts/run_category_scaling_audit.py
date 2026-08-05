@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 import pandas as pd
 
@@ -142,12 +141,8 @@ def main() -> None:
         "reference_categories": list(
             REFERENCE_CATEGORIES
         ),
-        "comparison_rows": int(
-            len(comparison)
-        ),
-        "audit_rows": int(
-            len(audit)
-        ),
+        "comparison_rows": len(comparison),
+        "audit_rows": len(audit),
         "historical_percentile_saturated_categories": (
             historical_saturated
         ),

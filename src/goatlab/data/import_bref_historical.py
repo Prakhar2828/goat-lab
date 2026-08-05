@@ -4,12 +4,10 @@ import re
 import zlib
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 
 from goatlab.settings import settings
 from goatlab.utils import write_parquet
-
 
 SOURCE_DIR = Path("data/external/bref_historical")
 

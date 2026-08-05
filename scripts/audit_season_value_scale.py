@@ -2,7 +2,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 PATH = Path(
     "data/processed/league_player_season_values.parquet"
 )

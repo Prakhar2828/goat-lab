@@ -13,7 +13,6 @@ from goatlab.models.expert_evidence import (
 )
 from goatlab.settings import settings
 
-
 LINE = "=" * 100
 
 

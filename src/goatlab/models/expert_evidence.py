@@ -6,7 +6,6 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-
 TARGET_PLAYERS = (
     "Michael Jordan",
     "LeBron James",
@@ -994,9 +993,7 @@ def build_expert_consensus(
                         "A"
                     ).any()
                 ),
-                "CLAIMS": int(
-                    len(group)
-                ),
+                "CLAIMS": len(group),
             }
         )
 

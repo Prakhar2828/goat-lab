@@ -13,7 +13,6 @@ from goatlab.models.cultural_impact import (
     combine_cultural_scores,
 )
 
-
 TARGET_PLAYERS = ("Michael Jordan", "LeBron James")
 
 
@@ -325,17 +324,11 @@ def build_cultural_sensitivity_grid(
 
     metadata: dict[str, Any] = {
         "players": 2,
-        "scenarios": int(len(summary)),
-        "grid_rows": int(len(grid)),
-        "attention_weight_values": int(
-            len(policy["attention_weight_values"])
-        ),
-        "attention_component_scenarios": int(
-            len(policy["attention_component_scenarios"])
-        ),
-        "rubric_dimension_scenarios": int(
-            len(policy["rubric_dimension_scenarios"])
-        ),
+        "scenarios": len(summary),
+        "grid_rows": len(grid),
+        "attention_weight_values": len(policy["attention_weight_values"]),
+        "attention_component_scenarios": len(policy["attention_component_scenarios"]),
+        "rubric_dimension_scenarios": len(policy["rubric_dimension_scenarios"]),
         "baseline_match_max_abs_error": baseline_error,
         "configured_blend_crossover_attention_weight": crossover,
         "winner_counts": winner_counts,
@@ -345,7 +338,7 @@ def build_cultural_sensitivity_grid(
         "primary_model_eligible": False,
         "additional_central_weight_total": 0.0,
         "central_scores_changed": False,
-        "release_blockers": int(len(blockers)),
+        "release_blockers": len(blockers),
         "blocker_details": blockers,
         "final_simulation_allowed": False,
     }

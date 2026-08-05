@@ -6,7 +6,6 @@ from pathlib import Path
 import pandas as pd
 
 from goatlab.models.playoff_game_evidence import (
-    CORE_STAT_COLUMNS,
     TARGET_PLAYERS,
     PlayoffGamePolicy,
     add_season_relative_metrics,
@@ -17,7 +16,6 @@ from goatlab.models.playoff_game_evidence import (
     summarize_player_games,
     summarize_series_games,
 )
-
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -214,22 +212,22 @@ def main() -> None:
 
     metadata: dict[str, object] = {
         "players": int(player_summary["PLAYER_NAME"].nunique()),
-        "candidate_games": int(len(candidate_games)),
+        "candidate_games": len(candidate_games),
         "expected_candidate_games": expected_games,
         "lebron_games": int(counts.get("LeBron James", 0)),
         "jordan_games": int(counts.get("Michael Jordan", 0)),
-        "candidate_series": int(len(candidate_series)),
+        "candidate_series": len(candidate_series),
         "exact_game_count_series": exact_series,
         "target_duplicate_player_games": target_duplicates,
         "minimum_core_stat_coverage": minimum_core_coverage,
-        "playoff_baseline_games": int(len(playoff_pool)),
+        "playoff_baseline_games": len(playoff_pool),
         "playoff_baseline_seasons": int(playoff_pool["SEASON"].nunique()),
         "bootstrap_repetitions": policy.bootstrap_repetitions,
         "bootstrap_cluster_unit": "playoff_series",
         "primary_model_eligible": False,
         "additional_central_weight_total": policy.additional_central_weight,
         "central_scores_changed": False,
-        "release_blockers": int(len(blockers)),
+        "release_blockers": len(blockers),
         "blocker_details": blockers,
         "final_simulation_allowed": policy.final_simulation_allowed,
     }

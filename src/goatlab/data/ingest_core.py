@@ -4,16 +4,15 @@ from collections.abc import Iterable
 
 import pandas as pd
 from nba_api.stats.endpoints import (
-    leaguegamelog,
     leaguedashplayerstats,
     leaguedashteamstats,
+    leaguegamelog,
     playerawards,
 )
 
 from goatlab.data.nba_client import CachedNbaClient
 from goatlab.settings import settings
 from goatlab.utils import load_yaml, season_range, write_parquet
-
 
 SEASON_TYPES = ("Regular Season", "Playoffs")
 MEASURE_TYPES = ("Base", "Advanced")

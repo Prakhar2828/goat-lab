@@ -1,0 +1,27 @@
+{
+  "advisory_failures": 0,
+  "checks": 32,
+  "expert_evidence_treatment": "advisory_only_not_primary_model_eligible",
+  "final_simulation_allowed": true,
+  "native_scale_categories": [
+    "defense",
+    "winning_context",
+    "cultural_impact"
+  ],
+  "passed_checks": 32,
+  "production_scale": "bounded_logit_tail",
+  "production_scale_categories": [
+    "peak",
+    "prime",
+    "longevity",
+    "regular_season",
+    "playoffs",
+    "offense"
+  ],
+  "production_scale_frozen": true,
+  "production_weights_frozen": true,
+  "random_seed": 23,
+  "release_blockers": 0,
+  "simulations": 250000,
+  "within_group_concentration": 100.0
+}

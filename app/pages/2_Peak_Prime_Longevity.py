@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import plotly.express as px
-
 from common import load_parquet, page_header, require_data
 
 page_header("Peak, prime, and longevity", "Separate answers to three questions that are often incorrectly combined.")
@@ -23,5 +22,6 @@ shown = summary.melt(
 figure = px.bar(shown, x="WINDOW", y="VALUE", color="PLAYER_NAME", barmode="group")
 figure.update_yaxes(range=[0, 100])
 import streamlit as st
+
 st.plotly_chart(figure, use_container_width=True)
 st.dataframe(summary, use_container_width=True, hide_index=True)

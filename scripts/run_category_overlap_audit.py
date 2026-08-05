@@ -14,7 +14,6 @@ from goatlab.models.category_hierarchy import (
 from goatlab.settings import settings
 from goatlab.utils import write_parquet
 
-
 CONFIG_PATH = Path("configs/category_hierarchy.json")
 
 
@@ -75,7 +74,7 @@ def main() -> None:
     metadata = {
         "categories": int(weights["CATEGORY"].nunique()),
         "groups": int(weights["GROUP"].nunique()),
-        "pair_count": int(len(audit)),
+        "pair_count": len(audit),
         "declared_dependencies": int(
             audit["DECLARED_DEPENDENCY"].sum()
         ),

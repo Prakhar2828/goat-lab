@@ -7,7 +7,6 @@ import pandas as pd
 from goatlab.settings import settings
 from goatlab.utils import write_parquet
 
-
 EXPECTED_ADVANCED_COLUMNS = {
     "player",
     "season",

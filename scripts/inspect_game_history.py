@@ -2,7 +2,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 ROOT = Path("data/external/nba_game_history")
 
 files = sorted(

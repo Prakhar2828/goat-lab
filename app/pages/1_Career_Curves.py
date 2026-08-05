@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import plotly.express as px
 import streamlit as st
-
 from common import load_parquet, page_header, require_data
 
 page_header("Career curves", "Peak height, sustained prime, decline, and accumulated career value.")

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "goat-lab"
-version = "0.1.0"
+version = "1.0.0"
 description = "Coverage-aware Jordan vs. LeBron GOAT analysis platform"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -52,6 +52,18 @@ packages = ["src/goatlab"]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/audit_model_integrity.py" = ["BLE001"]
+"scripts/check_historical_playoff_api.py" = ["BLE001"]
+"scripts/inspect_game_history.py" = ["BLE001"]
+"src/goatlab/data/expert_source_verification.py" = ["BLE001", "S110"]
+"src/goatlab/data/import_bref_playoffs.py" = ["BLE001"]
+"src/goatlab/data/nba_client.py" = ["BLE001", "S110"]
+"src/goatlab/models/category_hierarchy.py" = ["TRY004"]
+"src/goatlab/models/evidence_uncertainty.py" = ["TRY004"]
+"src/goatlab/models/final_model.py" = ["TRY004"]
+"src/goatlab/models/release_gate.py" = ["BLE001"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

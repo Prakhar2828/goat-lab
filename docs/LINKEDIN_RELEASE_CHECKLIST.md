@@ -2,51 +2,46 @@
 
 ## Repository
 
-- Public GitHub repository
-- Clear README and one-command setup
-- Frozen data cutoff
-- License for your code
-- Data licenses and attribution documented
-- No secrets or giant raw files committed
-- Passing tests and clean install
-- Tagged release
+- [ ] Public GitHub repository
+- [x] Clear README and one-command release QA
+- [x] Frozen data cutoff
+- [x] License for project code
+- [x] Data licenses and attribution documented
+- [x] No secrets or giant raw files committed
+- [x] Passing tests and clean install workflow
+- [ ] Tagged release
 
 ## Dashboard
 
-- Strong landing page with one-sentence thesis
-- Mobile-readable executive chart
-- Peak versus longevity career curve
-- Playoff-context visualization
-- Weight simulator
-- Sensitivity result
-- Argument explorer
-- Methodology and limitations page
-- Source links
-- Loading and missing-data states tested
+- [x] Strong landing page with one-sentence thesis
+- [x] Mobile-readable executive result
+- [x] Peak-versus-longevity career curve
+- [x] Playoff-context visualization
+- [x] Hierarchy-aware weight simulator
+- [x] Scale-sensitivity result
+- [x] Argument explorer
+- [x] Methodology and limitations page
+- [x] Source and reproducibility documentation
+- [ ] Loading and missing-data states tested in the final container
 
 ## Research claims
 
-- No “statistically proved the GOAT” headline
-- Explain that greatness requires values as well as evidence
-- Separate full-career and matched-window results
-- State play-by-play/tracking limitations
-- State digital-attention limitations
-- Show the assumptions that reverse the winner
+- [x] No “statistically proved the GOAT” headline
+- [x] Explain that greatness requires values as well as evidence
+- [x] Separate frozen production and sensitivity results
+- [x] State play-by-play and tracking limitations
+- [x] State digital-attention limitations
+- [x] Show the assumptions that reverse the winner
 
-## Suggested LinkedIn asset sequence
+## LinkedIn assets
 
-1. Dashboard hero screenshot
-2. Career-value curve
-3. Peak versus longevity comparison
-4. Weight-sensitivity result
-5. Short screen recording moving the sliders
+1. `release/assets/goat_lab_v1_result.svg`
+2. `release/assets/scale_sensitivity.svg`
+3. Dashboard landing-page screenshot
+4. Career-value curve screenshot
+5. Short screen recording moving the hierarchy-aware sliders
 
-## Suggested post structure
+## Final post
 
-- Hook: why most GOAT debates fail methodologically
-- What you built
-- Data and methods
-- Most surprising finding
-- What changes the answer
-- Link to live dashboard and GitHub
-- Invite critique of the methodology rather than votes alone
+The publication-ready draft is in `docs/LINKEDIN_POST.md`. Add the live Streamlit and
+GitHub links immediately before publishing.

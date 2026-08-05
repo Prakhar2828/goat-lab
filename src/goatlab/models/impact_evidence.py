@@ -1,11 +1,10 @@
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
 
 import pandas as pd
-
 
 TARGET_PLAYERS = ("Michael Jordan", "LeBron James")
 
@@ -118,7 +117,7 @@ def build_impact_coverage(
                 metric_rows["PLAYER_NAME"].eq(player)
             ]
             observed = int(player_rows["VALUE"].notna().sum())
-            total = int(len(player_rows))
+            total = len(player_rows)
             regular = int(
                 player_rows.loc[
                     player_rows["SEASON_TYPE"].eq("Regular Season"),
@@ -210,7 +209,7 @@ def build_impact_audit(
 
     metadata = {
         "players": int(coverage["PLAYER_NAME"].nunique()),
-        "metrics_audited": int(len(registry)),
+        "metrics_audited": len(registry),
         "local_partial_metrics": int(registry["AVAILABILITY"].eq("local_partial").sum()),
         "unavailable_metrics": int(registry["AVAILABILITY"].eq("unavailable").sum()),
         "primary_eligible_metrics": int(registry["PRIMARY_MODEL_ELIGIBLE"].sum()),

@@ -45,16 +45,16 @@ def main() -> None:
 
     metadata = {
         "players": int(player_summary["PLAYER_NAME"].nunique()),
-        "supporting_cast_rows": int(len(supporting_cast)),
+        "supporting_cast_rows": len(supporting_cast),
         "support_rows_with_value": int(supporting_cast["SUPPORT_VALUE"].notna().sum()),
-        "candidate_series_rows": int(len(series_context)),
+        "candidate_series_rows": len(series_context),
         "candidate_series_with_support_context": int(
             series_context["SUPPORT_VALUE"].notna().sum()
         ),
         "injury_context_rows": int(
             supporting_cast["INJURY_CONTEXT_AVAILABLE"].sum()
         ),
-        "context_components": int(len(registry)),
+        "context_components": len(registry),
         "unavailable_context_components": int(
             registry["AVAILABILITY"].eq("unavailable").sum()
         ),

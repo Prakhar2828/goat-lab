@@ -4,7 +4,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 INPUT_PATH = Path(
     "data/interim/wikimedia_pageviews.parquet"
 )

@@ -1,11 +1,10 @@
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import Iterable
 
 import numpy as np
 import pandas as pd
-
 
 TARGET_PLAYERS = ("Michael Jordan", "LeBron James")
 
@@ -199,9 +198,9 @@ def build_supporting_cast_context(
             "PLAYER_NAME": target["PLAYER_NAME"],
             "SEASON": target["SEASON"],
             "SEASON_TYPE": target["SEASON_TYPE"],
-            "TEAMMATE_ROWS": int(len(teammates)),
+            "TEAMMATE_ROWS": len(teammates),
             "TOP_N": int(top_n),
-            "TOP_N_TEAMMATES": int(len(top)),
+            "TOP_N_TEAMMATES": len(top),
             "TOTAL_TEAMMATE_MINUTES": total_teammate_minutes,
             "TOP_N_MINUTES": top_minutes,
             "TOP_N_MINUTES_SHARE": float(top_share),
@@ -296,7 +295,7 @@ def summarize_supporting_cast(supporting_cast: pd.DataFrame) -> pd.DataFrame:
         rows.append(
             {
                 "PLAYER_NAME": player_name,
-                "PLAYER_SEASONS": int(len(group)),
+                "PLAYER_SEASONS": len(group),
                 "REGULAR_SEASONS": int(group["SEASON_TYPE"].eq("Regular Season").sum()),
                 "PLAYOFF_SEASONS": int(group["SEASON_TYPE"].eq("Playoffs").sum()),
                 "SUPPORT_VALUE_ROWS": int(values.notna().sum()),

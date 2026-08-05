@@ -9,7 +9,6 @@ from goatlab.reporting.category_scores import (
     build_category_scores,
 )
 
-
 PROCESSED_DIR = Path(
     "data/processed"
 )

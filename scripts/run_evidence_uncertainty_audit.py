@@ -14,7 +14,6 @@ from goatlab.models.evidence_uncertainty import (
     summarize_expert_diagnostics,
 )
 
-
 ROOT = Path(__file__).resolve().parents[1]
 PROCESSED = ROOT / "data" / "processed"
 CONFIG = ROOT / "configs" / "evidence_uncertainty.json"

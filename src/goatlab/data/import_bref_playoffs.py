@@ -16,7 +16,6 @@ from goatlab.data.import_bref_historical import (
 from goatlab.settings import settings
 from goatlab.utils import write_parquet
 
-
 START_END_YEAR = 1985
 END_END_YEAR = 1996
 
@@ -818,7 +817,7 @@ def build_historical_playoff_seasons() -> pd.DataFrame:
 
     outputs: list[pd.DataFrame] = []
 
-    for _, tables in all_tables.items():
+    for tables in all_tables.values():
         totals = tables["totals"]
         per100 = tables["per_poss"]
         advanced = tables["advanced"]

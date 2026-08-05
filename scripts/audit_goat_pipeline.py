@@ -2,7 +2,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
 PROCESSED = Path("data/processed")
 
 TARGET_IDS = {893, 2544}

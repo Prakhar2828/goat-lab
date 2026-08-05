@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 import pandas as pd
 
@@ -77,9 +76,7 @@ def main() -> None:
         "players": int(
             scores["PLAYER_NAME"].nunique()
         ),
-        "recognized_defensive_award_rows": int(
-            len(normalized_awards)
-        ),
+        "recognized_defensive_award_rows": len(normalized_awards),
         "awards_players_covered": int(
             scores[
                 "AWARDS_USED_IN_MODEL"

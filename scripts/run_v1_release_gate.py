@@ -3,8 +3,6 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import pandas as pd
-
 from goatlab.models.category_hierarchy import (
     load_hierarchy_config,
 )

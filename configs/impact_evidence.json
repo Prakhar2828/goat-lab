@@ -1,0 +1,37 @@
+{
+  "policy_name": "v1_impact_metric_availability",
+  "policy_frozen": true,
+  "central_score_integration": false,
+  "central_score_weight": 0.0,
+  "local_partial_metrics": {
+    "net_rating": {
+      "status": "diagnostic_only_provenance_mismatch",
+      "true_on_off": false
+    },
+    "pie": {
+      "status": "diagnostic_only_coverage_asymmetry"
+    },
+    "plus_minus": {
+      "status": "diagnostic_only_coverage_asymmetry",
+      "adjusted_impact": false
+    },
+    "ws_per_48": {
+      "status": "diagnostic_only_merge_gap"
+    },
+    "bpm": {
+      "status": "diagnostic_only_merge_gap"
+    },
+    "vorp": {
+      "status": "diagnostic_only_merge_gap"
+    }
+  },
+  "unavailable_metrics": {
+    "on_off_net": "No reproducible local player on/off split.",
+    "rapm": "No reproducible local RAPM source.",
+    "epm": "No reproducible local EPM source.",
+    "lebron_metric": "No reproducible local LEBRON metric source."
+  },
+  "missing_metric_policy": "do_not_impute",
+  "double_counting_policy": "do_not_add_a_separate_weighted_category",
+  "final_simulation_allowed": false
+}

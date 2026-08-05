@@ -7,7 +7,7 @@ metric_families:
     metrics: [ast_per_75, ast_pct, creation_proxy, ast_tov_ratio]
   possession_value:
     direction: higher
-    metrics: [bpm, vorp_rate, ws_per_48, on_off_net]
+    metrics: [bpm, vorp_rate, ws_per_48]
   defense:
     direction: higher
     metrics: [dbpm, defensive_ws_rate, steal_block_index, defense_film_score]

@@ -17,6 +17,7 @@
 - [x] Expert claims framework implemented
 - [x] Awards integrated
 - [x] Defense reliability integrated
+- [x] Impact-metric availability and coverage audited
 - [ ] Impact metrics integrated
 - [ ] Supporting-cast context integrated
 - [ ] Game-level playoff analysis integrated

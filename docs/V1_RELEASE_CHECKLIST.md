@@ -19,6 +19,7 @@
 - [x] Defense reliability integrated
 - [x] Impact-metric availability and coverage audited
 - [x] Supporting-cast, injury, and team-context policy audited
+- [x] Game-level playoff evidence audited
 - [ ] Impact metrics integrated
 - [ ] Supporting-cast context integrated
 - [ ] Game-level playoff analysis integrated

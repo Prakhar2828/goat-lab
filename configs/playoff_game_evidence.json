@@ -1,0 +1,27 @@
+{
+  "policy_name": "v1_playoff_game_evidence",
+  "minimum_baseline_minutes": 12.0,
+  "bootstrap_repetitions": 5000,
+  "bootstrap_seed": 23,
+  "target_players": [
+    "Michael Jordan",
+    "LeBron James"
+  ],
+  "comparison_metrics": [
+    "GAME_SCORE",
+    "GAME_SCORE_PER36",
+    "GAME_SCORE_SEASON_Z",
+    "TRUE_SHOOTING_PLUS",
+    "POINTS_PER_GAME",
+    "ASSISTS_PER_GAME",
+    "REBOUNDS_PER_GAME"
+  ],
+  "central_score_policy": {
+    "primary_model_eligible": false,
+    "additional_central_weight": 0.0,
+    "reason": "Game-level box evidence overlaps the existing playoff and offense categories and remains diagnostic until the final preregistered sensitivity gate."
+  },
+  "missing_data_policy": "preserve_missing_never_zero",
+  "series_match_policy": "require_exact_player_team_opponent_date_and_game_count",
+  "final_simulation_allowed": false
+}

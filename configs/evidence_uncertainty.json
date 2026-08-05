@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "uncertainty_rules_frozen": true,
+  "final_simulation_allowed": false,
+  "coverage_penalty": 0.75,
+  "confidence_penalty": 1.0,
+  "expert_policy": {
+    "central_score_weight": 0.0,
+    "narrow_intervals_only_when_primary_eligible": true,
+    "minimum_primary_rows_per_player_side": 1,
+    "minimum_source_families": 3,
+    "narrowing_factor": 0.85
+  },
+  "categories": {
+    "peak": {
+      "base_half_width": 4.0,
+      "coverage": 0.95,
+      "confidence": 0.9
+    },
+    "prime": {
+      "base_half_width": 4.0,
+      "coverage": 0.95,
+      "confidence": 0.9
+    },
+    "longevity": {
+      "base_half_width": 3.5,
+      "coverage": 0.98,
+      "confidence": 0.92
+    },
+    "regular_season": {
+      "base_half_width": 3.5,
+      "coverage": 0.98,
+      "confidence": 0.92
+    },
+    "playoffs": {
+      "base_half_width": 5.0,
+      "coverage": 0.92,
+      "confidence": 0.84
+    },
+    "winning_context": {
+      "base_half_width": 7.5,
+      "coverage": 0.82,
+      "confidence": 0.72
+    },
+    "offense": {
+      "base_half_width": 4.5,
+      "coverage": 0.94,
+      "confidence": 0.87
+    },
+    "defense": {
+      "base_half_width": 6.0,
+      "coverage": 0.9,
+      "confidence": 0.78
+    },
+    "cultural_impact": {
+      "base_half_width": 8.0,
+      "coverage": 0.78,
+      "confidence": 0.68
+    }
+  }
+}

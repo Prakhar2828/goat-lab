@@ -7,7 +7,7 @@
 - [x] Category hierarchy frozen
 - [x] Double-counting audit passed
 - [ ] Weights frozen
-- [ ] Uncertainty rules frozen
+- [x] Uncertainty rules frozen
 - [ ] Sensitivity scenarios frozen
 
 ## Evidence

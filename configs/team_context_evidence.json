@@ -1,0 +1,25 @@
+{
+  "policy_name": "v1_team_context_evidence",
+  "top_n_teammates": 8,
+  "minimum_support_coverage": 0.5,
+  "support_value_source_preference": [
+    "SEASON_VALUE_0_100",
+    "SEASON_VALUE_Z"
+  ],
+  "focal_player_excluded": true,
+  "supporting_cast_primary_model_eligible": false,
+  "supporting_cast_additional_central_weight": 0.0,
+  "injury_context_available": false,
+  "missing_injury_policy": "widen_uncertainty_do_not_score_zero",
+  "series_expectation_policy": {
+    "existing_team_strength_inputs_retained": [
+      "TEAM_SRS",
+      "OPP_SRS",
+      "TEAM_NET_RATING",
+      "OPP_NET_RATING"
+    ],
+    "supporting_cast_added_to_expectation": false,
+    "injury_context_added_to_expectation": false
+  },
+  "final_simulation_allowed": false
+}

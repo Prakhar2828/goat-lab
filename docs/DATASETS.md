@@ -1,174 +1,357 @@
-# Dataset inventory
+# GOAT Lab v1 Data Inventory
 
-## A. Essential on-court datasets
+## 1. Purpose
 
-| Dataset | Unit | Required fields | Main use | Coverage rule |
-|---|---|---|---|---|
-| Player season traditional | Player-season-season type | GP, MIN, PTS, FGA, FTA, 3PA, REB, AST, STL, BLK, TOV | Production, availability, efficiency | Entire target careers |
-| Player season per 100 | Player-season-season type | Per-100 PTS, AST, REB, STL, BLK, TOV | Pace-neutral comparison | Entire target careers where available |
-| Player season advanced | Player-season-season type | ORtg, DRtg, NetRtg, AST%, REB%, USG%, TS%, PIE | Role and team-impact context | Record exact start year per metric |
-| Basketball-Reference advanced | Player-season-season type | PER, WS, WS/48, OBPM, DBPM, BPM, VORP | Independent metric family | BPM/VORP available for both target careers |
-| Team season | Team-season-season type | W, L, pace, ORtg, DRtg, NetRtg | Era and team strength | Entire target careers |
-| Team game logs | Team-game | Date, opponent, points, result | SRS, schedule strength, playoff series | Entire target careers |
-| Player game logs | Player-game | Minutes and box score | Distribution, consistency, elimination/clutch samples | Entire target careers where endpoint succeeds |
-| Awards | Player-award-season | Award, team, season | Accolades and defensive recognition | Entire careers |
-| MVP voting | Player-season | Rank, votes, points, share | Voting dominance, not only award wins | Every vote-receiving season |
+This document lists the data that entered the published GOAT Lab v1 pipeline or its released supporting views.
 
-## B. Context datasets
+It is not a wishlist of possible future datasets.
 
-### Playoff series table
+No survey was conducted or used. No survey responses, external GOAT polls, or public-opinion variables entered the published v1 result.
 
-One row per team-side per series. Minimum columns:
+## 2. Player-season data
 
-```text
-SEASON, ROUND, SERIES_ID, TEAM_ID, OPP_TEAM_ID, TEAM_WON_SERIES,
-TEAM_SEED, OPP_SEED, HOME_COURT, TEAM_SRS, OPP_SRS,
-TEAM_NET_RATING, OPP_NET_RATING, REST_ADVANTAGE,
-TEAM_STAR_VALUE, OPP_STAR_VALUE, TEAM_SUPPORT_VALUE, OPP_SUPPORT_VALUE
-```
+Unit of analysis:
 
-Optional but valuable:
+PLAYER_NAME + SEASON + SEASON_TYPE
 
-```text
-TEAM_TOP8_MINUTES_AVAILABLE, OPP_TOP8_MINUTES_AVAILABLE,
-COACH_TENURE, PRESEASON_TITLE_PROB, SERIES_START_INJURY_NOTES,
-BEST_OF, GAMES_PLAYED, PLAYER_NAME, PLAYER_SERIES_VALUE
-```
+Season types:
 
-### Roster and teammate value
+- Regular Season
+- Playoffs
 
-Create a player-team-season table with minutes and season value. Supporting-cast value should exclude the focal player. Calculate several versions:
+Fields used where available include:
 
-- Minutes-weighted mean value of teammates
-- Top-three teammate value
-- Top-eight rotation value
-- Replacement-level minutes
-- All-Star/All-NBA teammate indicators
-- Team performance without the focal player
+- Games
+- Minutes
+- Points
+- Field-goal attempts
+- Free-throw attempts
+- Assists
+- Rebounds
+- Steals
+- Blocks
+- Turnovers
+- Per-100-possession rates
+- Usage percentage
+- Assist percentage
+- Rebound percentage
+- True-shooting percentage
+- Offensive rating
+- Defensive rating
+- Net rating
+- PIE
 
-Do not use only named-star counts.
+Main uses:
 
-### Injuries and availability
+- Per-75 conversion
+- True-shooting calculation
+- Same-season league baselines
+- Era-relative standardization
+- Reliability adjustment
+- Metric-family construction
+- Season-value scoring
+- Peak, prime, longevity, regular-season, playoff, offense, and defense categories
 
-There is no perfectly standardized free historical injury dataset. Use a manual series-level ledger with source citations. At minimum record whether a top-three rotation player was unavailable or meaningfully limited at series start.
+Unavailable historical fields are not entered as zero. Calculations use available components while coverage is tracked separately.
 
-## C. Possession and lineup datasets
+## 3. Historical league and career reference data
 
-### `shufinskiy/nba_data`
+League reference values are calculated separately by season and season type.
 
-Repository: `https://github.com/shufinskiy/nba_data`
+These distributions support:
 
-Uses NBA.com, data.nba.com, and pbpstats-derived data. It provides play-by-play beginning in 1996-97 and playoff data. Use it for:
+- League means
+- League standard deviations
+- Relative values
+- Standardized z-scores
+- Historical percentiles
+- Reliability-adjusted metrics
 
-- Possession parsing
-- Lineups on court
-- On/off values
-- RAPM or regularized lineup models
-- Shot details
-- Matchups in modern seasons
+Career reference eligibility requires:
 
-Fairness rule: possession and lineup metrics cannot represent Jordan’s full career. Use them as matched-window or supplementary robustness evidence, not as an unqualified career category.
+- At least five regular seasons
+- At least 5,000 regular-season minutes
 
-### `pbpstats`
+The historical career reference population supplies distributions for:
 
-Documentation: `https://pbpstats.readthedocs.io/`
+- Peak
+- Prime
+- Longevity
+- Regular-season value
+- Playoff value
+- Offense
+- Historical box-score defense
 
-Useful enriched concepts include possession start type, lineup IDs, score margin, event timing, and possession details.
+The reference population prevents the category scale from being based only on the two target players.
 
-## D. Shot and play-type datasets
+## 4. Playoff-series data
 
-### Shot charts
+Unit of analysis:
 
-Use NBA shot-chart endpoints where available. Derive:
+One team-side per playoff series
 
-- Rim, short midrange, long midrange, corner three, above-break three frequencies
-- Efficiency by zone
-- Assisted versus unassisted share where available
-- Playoff change in shot profile
+Required core fields include:
 
-Do not claim full-career shot-location equivalence when early data is missing.
+- SEASON
+- TEAM_WON_SERIES
 
-### Synergy-style play types
+Available pre-series features are selected from:
 
-Public repository: `https://github.com/DomSamangy/NBA_Play_Types_12_25`
+- TEAM_SRS
+- OPP_SRS
+- TEAM_NET_RATING
+- OPP_NET_RATING
+- TEAM_SEED
+- OPP_SEED
+- HOME_COURT
+- REST_ADVANTAGE
+- TEAM_STAR_VALUE
+- OPP_STAR_VALUE
+- TEAM_SUPPORT_VALUE
+- OPP_SUPPORT_VALUE
 
-Coverage begins in 2012-13, so it is a LeBron-era role analysis, not a direct full-career Jordan comparison. Use it to explain later-career offensive versatility and explicitly label the missing Jordan comparison.
+Derived fields include:
 
-## E. Cultural and public-impact datasets
+- EXPECTED_SERIES_WIN_PROB
+- SERIES_OVERPERFORMANCE
+- SURPRISE_LOG_SCORE
+- CV_FOLD
+- PREDICTION_SOURCE
 
-### Wikimedia Analytics API
+Main uses:
 
-Documentation: `https://doc.wikimedia.org/generated-data-platform/aqs/analytics-api/`
+- Training and evaluating the playoff-series expectation model
+- Producing season-grouped out-of-fold predictions
+- Building the winning-context category
+- Supporting playoff and team-context dashboard views
 
-Daily pageviews begin July 1, 2015. Use monthly totals, event-normalized spikes, geographic data where available, and overlapping-period comparisons.
+The published model uses regularized logistic regression with median imputation and standard scaling.
 
-### Google Trends
+Historical career scoring uses season-grouped out-of-fold predictions. A series is not scored by a model trained on another series from the same season.
 
-Manually export searches for the matched topics `Michael Jordan` and `LeBron James`. Use the same geography, category, search type, and date range. Because Trends values are normalized within each request, both names must appear in the same request for direct comparison.
+## 5. Defensive evidence
 
-### GDELT DOC API
+The designed defense structure allows:
 
-Use for news-volume and tone analysis in overlapping modern years. Search exact names and remove common false positives. Validate a sample of articles manually.
+- Historical box-score defense
+- Structured expert-film evidence
+- Defensive-award evidence
 
-### New York Times Article Search API
+Published v1 uses:
 
-Optional single-publication historical corpus. It is not global media coverage, but its long archive can support a clearly labeled case study.
+- Historical box-defense evidence
+- Defensive-award evidence where available
 
-### Verified impact ledger
+No expert-film source met the frozen primary-model eligibility standard. No expert-film score entered the central v1 result.
 
-Manually create one row per sourced event:
+Missing components are reweighted rather than treated as zero.
 
-```text
-PLAYER_NAME, DATE, DIMENSION, SUBDIMENSION, EVENT,
-RAW_VALUE, UNIT, INFLATION_ADJUSTED_USD, BENEFICIARIES,
-GEOGRAPHY, SOURCE_ID, CONFIDENCE, NOTES
-```
+The following did not enter the released full-career defense score:
 
-Dimensions:
+- Modern tracking data
+- Possession-level lineup data
+- RAPM
+- Matchup-level tracking
+- Film-possession annotations
 
-- Commercial
-- Philanthropic
-- Educational
-- Civic
+## 6. Wikimedia pageviews
+
+Unit of analysis:
+
+PLAYER_NAME + DATE
+
+Required fields include:
+
+- PLAYER_NAME
+- date
+- views
+
+Main use:
+
+The common-window public-attention component of cultural impact.
+
+The attention score uses:
+
+- Total view share
+- Median daily view share
+- Median annual view share
+
+Both players use the same overlapping comparison window.
+
+Wikimedia attention contributes 20% of the published cultural-impact category.
+
+## 7. Cultural-impact rubric
+
+Unit of analysis:
+
+PLAYER_NAME + DIMENSION
+
+Required fields include:
+
+- PLAYER_NAME
+- DIMENSION
+- SCORE_0_100
+- CONFIDENCE
+- SOURCE_IDS
+- RATIONALE
+
+Required dimensions:
+
+- Commercial and global reach
 - Basketball-culture influence
-- Globalization
-- Athlete-business influence
+- Media and entertainment reach
+- Philanthropy and social institutions
 
-Never treat announcements as verified outcomes without evidence.
+Dimension weights:
 
-## F. Film annotation dataset
+- Commercial and global reach: 30%
+- Basketball-culture influence: 30%
+- Media and entertainment reach: 15%
+- Philanthropy and social institutions: 25%
 
-Minimum columns:
+A final rubric score is produced only when every required dimension is complete.
 
-```text
-PLAYER_NAME, GAME_ID, DATE, SEASON, SEASON_TYPE, ROUND,
-POSSESSION_ID, PERIOD, CLOCK, OFFENSE_TEAM, DEFENSE_TEAM,
-PRIMARY_ASSIGNMENT, ACTION_TYPE, OUTCOME,
-POA_GRADE, SCREEN_NAV_GRADE, HELP_GRADE, RIM_GRADE,
-REBOUND_GRADE, TRANSITION_GRADE, ERROR_SEVERITY,
-MATCHUP_DIFFICULTY, CODER_ID, NOTES, VIDEO_SOURCE_ID
-```
+The sourced rubric contributes 80% of the published cultural-impact category.
 
-Use ordinal grades with written anchors, for example `-2` major harmful error through `+2` major positive impact.
+The rubric is a declared evidence index. It is not a causal estimate of commercial, cultural, media, or social outcomes.
 
-## G. Survey dataset
+## 8. Defensive-award evidence
 
-A public survey cannot be completed rigorously in one day unless respondents already exist. Build the form now and publish the first dashboard version without presenting an empty or convenience sample as population truth.
+Defensive-award records are used as supporting historical evidence in the defense category.
 
-Suggested fields:
+Relevant evidence may include:
 
-- GOAT choice
-- Peak importance
-- Longevity importance
-- Championship importance
-- Statistics importance
-- Defense importance
-- Cultural-impact importance
-- Age range
-- Country/region
-- Years watching NBA
-- Watched Jordan live
-- Watched LeBron live
-- Playing/coaching experience
+- Defensive Player of the Year recognition
+- All-Defensive Team recognition
+- Available voting or placement information
 
-Analyze choice using logistic regression only after adequate sample size and demographic disclosure.
+Award evidence is not treated as a complete measure of defense.
+
+Awards can reflect:
+
+- Reputation
+- Voting context
+- Positional expectations
+- Team success
+- Historical differences in award availability
+
+## 9. Frozen category-score data
+
+The released category-score artifacts contain the final 0–100 scores used by the published model.
+
+The nine categories are:
+
+- Peak
+- Prime
+- Longevity
+- Regular season
+- Playoffs
+- Offense
+- Defense
+- Winning context
+- Cultural impact
+
+These artifacts support:
+
+- The public result table
+- Category comparisons
+- Weight contribution views
+- The custom weight simulator
+- Release verification
+
+## 10. Weight-simulation data
+
+The frozen sensitivity release contains results from:
+
+- 250,000 draws
+- Random seed 23
+- Within-group Dirichlet concentration 100
+- Fixed group totals of 50% / 40% / 10%
+
+Released outputs include:
+
+- Player win shares
+- Score summaries
+- Margin summaries
+- Category-weight correlations with the LeBron-minus-Jordan margin
+- Driver tables used by the dashboard
+
+The reported 60.1484% and 39.8516% values are shares of tested scoring setups. They are not objective GOAT probabilities.
+
+## 11. Scaling-sensitivity data
+
+The release evaluates four approved category-scaling methods:
+
+- historical_percentile
+- normal_score_tail
+- bounded_logit_tail
+- robust_mad_reference
+
+The production method is bounded_logit_tail.
+
+The four approved methods split 2–2 between LeBron and Jordan.
+
+Scaling-sensitivity outputs are used to explain why the published conclusion is conditional rather than stable across every approved transformation.
+
+## 12. Frozen release artifacts
+
+The public dashboard reads committed release files covering:
+
+- Production category scores
+- Production hierarchy scores
+- Player-season values
+- Peak, prime, and longevity summaries
+- Scored playoff-series data
+- Playoff model metrics
+- Weight-simulation summaries
+- Weight-simulation drivers
+- Scaling-sensitivity results
+- Release-gate metadata
+- Model training metadata
+- Artifact hashes
+- Machine-readable release manifest
+
+These committed files allow the public dashboard to run without downloading source data or rerunning the final model and simulation.
+
+## 13. Data not used in the published v1 result
+
+The following did not enter the frozen v1 result:
+
+- Survey responses
+- External GOAT polling data
+- RAPM
+- Possession-level lineup regression
+- Shot-chart data
+- Play-type data
+- Film-possession annotations
+- Qualifying expert-film scores
+- Google Trends
+- GDELT
+- New York Times article data
+- PCA-derived category scores
+- Bootstrap samples or confidence intervals
+- Gradient-boosted playoff predictions
+
+Some related code or early planning may remain in the research repository. Those components did not enter the published scores or conclusion.
+
+## 14. Known data limitations
+
+Important limitations include:
+
+- Historical statistics are not equally complete across eras
+- Advanced metrics are more available in recent seasons
+- Rule changes and playing environments cannot be fully normalized
+- Defensive evidence remains incomplete
+- Playoff context is measured at the team-series level
+- Supporting-cast and star-value fields are simplified summaries
+- Wikimedia attention covers a modern overlapping period
+- Cultural-rubric scoring contains structured human judgment
+- Missing evidence can change the effective composition of a category
+
+## 15. Release and versioning policy
+
+The v1 release is frozen and reproducible.
+
+A future data correction or methodology change should produce a new release rather than silently modifying the meaning of the published v1 result.
+
+The public dashboard reads the committed v1 artifacts and does not rerun the final model or simulation.

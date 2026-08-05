@@ -1,6 +1,10 @@
 # GOAT Lab — Michael Jordan vs. LeBron James
 
-![GOAT Lab v1 result](release/assets/goat_lab_v1_result.svg)
+> **Live interactive demo:** https://goat-lab-jordan-lebron.streamlit.app/  
+> **Plain-language dashboard guide:** [docs/DASHBOARD_GUIDE.md](docs/DASHBOARD_GUIDE.md)
+
+
+![GOAT Lab v1 result](release/assets/goat_lab_v1_result.png)
 
 GOAT Lab is a reproducible basketball-research platform built around a more useful
 question than “Who is the GOAT?”:
@@ -24,7 +28,7 @@ the GOAT. The four approved scaling scenarios split 2–2:
 | `historical_percentile` | Michael Jordan | -2.582595 |
 | `robust_mad_reference` | Michael Jordan | -0.286191 |
 
-![Scale sensitivity](release/assets/scale_sensitivity.svg)
+![Scale sensitivity](release/assets/scale_sensitivity.png)
 
 Defense is the strongest swing factor toward Jordan. Offense is the largest
 counterweight favoring LeBron.

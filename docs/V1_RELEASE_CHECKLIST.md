@@ -20,6 +20,7 @@
 - [x] Impact-metric availability and coverage audited
 - [x] Supporting-cast, injury, and team-context policy audited
 - [x] Game-level playoff evidence audited
+- [x] Cultural-impact weighting sensitivity frozen
 - [ ] Impact metrics integrated
 - [ ] Supporting-cast context integrated
 - [ ] Game-level playoff analysis integrated

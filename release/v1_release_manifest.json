@@ -1,0 +1,268 @@
+{
+  "artifact_sha256": {
+    "configs/category_hierarchy.json": "b70ea92f65a4539539cee67c92cd02aa7196feae88bd24c3491ca46f85a6f7d6",
+    "configs/v1_final_model.json": "9346df4120a6a7bd64dc01027ee078367094053e925bcd29f306a4fff98ecca7",
+    "data/processed/hierarchy_weight_simulation_group_audit.parquet": "0561e9b0d64f028def6be63e10c1e0b0c23dd41cc258108cca471b720090c42c",
+    "data/processed/production_category_scores.parquet": "c3af927120a9e537be77c09543ee109806f34bd554001c63876f66dfefe171ad",
+    "data/processed/production_hierarchy_scores.parquet": "2cca6ac3e93a10d7921e243c950975134def6aec9ddcba0e803719c7dd73e2e5",
+    "data/processed/v1_release_gate.json": "f537face424dea7a51786c78c1e892d7543957cf8b876af96e7597d8bd5b6ac7",
+    "data/processed/weight_simulation_drivers.parquet": "a90e1487d87fca26d6675625329bcc95f5b2699ba9361832251b1e10ee654b28",
+    "data/processed/weight_simulation_summary.parquet": "8fae12c7745ace22d63726e880f200d023e20756e6ea1dca3a5340a17e54615d",
+    "docs/V1_FINAL_PREREGISTRATION.md": "ebee680bf8adf312c3b1cfc4cfbec181254137f3c1b84dac78e3e61dd6df9958",
+    "models/training_metadata.json": "b84baff975b0e87ba16df833671ae3cedcd30c6eb2f63bc3fba5684c39e067cd"
+  },
+  "central_result": {
+    "margin_points": 0.11509062208484977,
+    "players": [
+      {
+        "goat_score": 89.25898519075123,
+        "player": "LeBron James",
+        "rank": 1.0
+      },
+      {
+        "goat_score": 89.14389456866638,
+        "player": "Michael Jordan",
+        "rank": 2.0
+      }
+    ],
+    "winner": "LeBron James"
+  },
+  "cultural_weighting_sensitivity": {
+    "configured_crossover_attention_weight": 0.4922108425038464,
+    "scenario_count": 80,
+    "winner_counts": {
+      "LeBron James": 52,
+      "Michael Jordan": 28
+    },
+    "winner_robust": false
+  },
+  "group_cap_audit": [
+    {
+      "FROZEN_GROUP_CAP": 0.5,
+      "GROUP": "performance_arc",
+      "MAX_REALIZED_GROUP_MASS": 0.5000000000000002,
+      "MEAN_REALIZED_GROUP_MASS": 0.5,
+      "MIN_REALIZED_GROUP_MASS": 0.4999999999999998
+    },
+    {
+      "FROZEN_GROUP_CAP": 0.4,
+      "GROUP": "basketball_value",
+      "MAX_REALIZED_GROUP_MASS": 0.4000000000000002,
+      "MEAN_REALIZED_GROUP_MASS": 0.40000000000000013,
+      "MIN_REALIZED_GROUP_MASS": 0.39999999999999986
+    },
+    {
+      "FROZEN_GROUP_CAP": 0.1,
+      "GROUP": "broader_legacy",
+      "MAX_REALIZED_GROUP_MASS": 0.1,
+      "MEAN_REALIZED_GROUP_MASS": 0.10000000000000003,
+      "MIN_REALIZED_GROUP_MASS": 0.1
+    }
+  ],
+  "interpretation": "Share of preregistered sampled value systems won; not an objective probability that a player is the GOAT.",
+  "limitations": [
+    "The central winner changes across approved category-scaling scenarios.",
+    "The cultural-impact ordering changes across reasonable weighting choices.",
+    "Expert-film evidence was excluded from the primary model because no source met the frozen eligibility standard.",
+    "Game-level playoff, impact-metric, and supporting-cast audits remain diagnostic and add zero central weight.",
+    "The simulation varies within-group category weights around fixed group caps; it does not sample every possible GOAT philosophy."
+  ],
+  "model_freeze": {
+    "native_scale_categories": [
+      "defense",
+      "winning_context",
+      "cultural_impact"
+    ],
+    "production_scale": "bounded_logit_tail",
+    "production_scale_categories": [
+      "peak",
+      "prime",
+      "longevity",
+      "regular_season",
+      "playoffs",
+      "offense"
+    ],
+    "production_scale_frozen": true,
+    "production_weights_frozen": true,
+    "random_seed": 23,
+    "release_blockers": 0,
+    "release_gate_checks": 32,
+    "release_gate_passed_checks": 32,
+    "simulations": 250000,
+    "within_group_concentration": 100.0
+  },
+  "production_category_scores": [
+    {
+      "PLAYER_NAME": "LeBron James",
+      "cultural_impact": 85.68506394858369,
+      "defense": 71.38555922605002,
+      "longevity": 100.0,
+      "offense": 95.50680911188624,
+      "peak": 97.66833289980468,
+      "playoffs": 99.90394634048334,
+      "prime": 95.56895497613786,
+      "regular_season": 98.3858515673937,
+      "winning_context": 58.38569147750257
+    },
+    {
+      "PLAYER_NAME": "Michael Jordan",
+      "cultural_impact": 86.63493605141633,
+      "defense": 95.44030202925907,
+      "longevity": 93.21596304576092,
+      "offense": 91.71732979994056,
+      "peak": 92.8938889395695,
+      "playoffs": 93.73964318079983,
+      "prime": 92.27442164990927,
+      "regular_season": 92.8938889395695,
+      "winning_context": 60.24716633118236
+    }
+  ],
+  "release": "v1",
+  "result_classification": "conditional_not_robust_across_approved_scaling_scenarios",
+  "scale_sensitivity": {
+    "distinct_winners": [
+      "LeBron James",
+      "Michael Jordan"
+    ],
+    "scenarios": [
+      {
+        "is_production": true,
+        "jordan_score": 89.14389456866638,
+        "lebron_minus_jordan": 0.11509062208484977,
+        "lebron_score": 89.25898519075123,
+        "scenario": "bounded_logit_tail",
+        "winner": "LeBron James"
+      },
+      {
+        "is_production": false,
+        "jordan_score": 93.31324138471757,
+        "lebron_minus_jordan": -2.5825950948775755,
+        "lebron_score": 90.73064628984,
+        "scenario": "historical_percentile",
+        "winner": "Michael Jordan"
+      },
+      {
+        "is_production": false,
+        "jordan_score": 84.95177911541472,
+        "lebron_minus_jordan": 2.2256110287300856,
+        "lebron_score": 87.17739014414481,
+        "scenario": "normal_score_tail",
+        "winner": "LeBron James"
+      },
+      {
+        "is_production": false,
+        "jordan_score": 80.36445677940124,
+        "lebron_minus_jordan": -0.28619090144415793,
+        "lebron_score": 80.07826587795708,
+        "scenario": "robust_mad_reference",
+        "winner": "Michael Jordan"
+      }
+    ],
+    "winner_robust": false
+  },
+  "simulation_drivers": [
+    {
+      "CATEGORY": "defense",
+      "FROZEN_TOTAL_WEIGHT": 0.12,
+      "GROUP": "basketball_value",
+      "MARGIN_CORRELATION_PLAYER_1": -0.9750678183843701,
+      "MEAN_SAMPLED_WEIGHT": 0.12001540792235624,
+      "P05_SAMPLED_WEIGHT": 0.09094689667066341,
+      "P95_SAMPLED_WEIGHT": 0.15093527534912668
+    },
+    {
+      "CATEGORY": "offense",
+      "FROZEN_TOTAL_WEIGHT": 0.18000000000000002,
+      "GROUP": "basketball_value",
+      "MARGIN_CORRELATION_PLAYER_1": 0.7277615575349538,
+      "MEAN_SAMPLED_WEIGHT": 0.17995180931309424,
+      "P05_SAMPLED_WEIGHT": 0.1475948060819443,
+      "P95_SAMPLED_WEIGHT": 0.21280439022316472
+    },
+    {
+      "CATEGORY": "winning_context",
+      "FROZEN_TOTAL_WEIGHT": 0.1,
+      "GROUP": "basketball_value",
+      "MARGIN_CORRELATION_PLAYER_1": 0.19422467961303316,
+      "MEAN_SAMPLED_WEIGHT": 0.1000327827645501,
+      "P05_SAMPLED_WEIGHT": 0.0728325229670457,
+      "P95_SAMPLED_WEIGHT": 0.1295696000033105
+    },
+    {
+      "CATEGORY": "prime",
+      "FROZEN_TOTAL_WEIGHT": 0.1,
+      "GROUP": "performance_arc",
+      "MARGIN_CORRELATION_PLAYER_1": -0.0962942186708206,
+      "MEAN_SAMPLED_WEIGHT": 0.10001429204593679,
+      "P05_SAMPLED_WEIGHT": 0.06912602949550331,
+      "P95_SAMPLED_WEIGHT": 0.1343551101565753
+    },
+    {
+      "CATEGORY": "longevity",
+      "FROZEN_TOTAL_WEIGHT": 0.075,
+      "GROUP": "performance_arc",
+      "MARGIN_CORRELATION_PLAYER_1": 0.06963709594233113,
+      "MEAN_SAMPLED_WEIGHT": 0.07498427145428067,
+      "P05_SAMPLED_WEIGHT": 0.047952296090013995,
+      "P95_SAMPLED_WEIGHT": 0.106122639638151
+    },
+    {
+      "CATEGORY": "playoffs",
+      "FROZEN_TOTAL_WEIGHT": 0.1,
+      "GROUP": "performance_arc",
+      "MARGIN_CORRELATION_PLAYER_1": 0.051026405934187107,
+      "MEAN_SAMPLED_WEIGHT": 0.10002892342516648,
+      "P05_SAMPLED_WEIGHT": 0.06903126408238634,
+      "P95_SAMPLED_WEIGHT": 0.134293087793932
+    },
+    {
+      "CATEGORY": "peak",
+      "FROZEN_TOTAL_WEIGHT": 0.125,
+      "GROUP": "performance_arc",
+      "MARGIN_CORRELATION_PLAYER_1": -0.030886768477352854,
+      "MEAN_SAMPLED_WEIGHT": 0.1250141784956851,
+      "P05_SAMPLED_WEIGHT": 0.09097817736255075,
+      "P95_SAMPLED_WEIGHT": 0.16194323480925032
+    },
+    {
+      "CATEGORY": "regular_season",
+      "FROZEN_TOTAL_WEIGHT": 0.1,
+      "GROUP": "performance_arc",
+      "MARGIN_CORRELATION_PLAYER_1": 0.016625815858998624,
+      "MEAN_SAMPLED_WEIGHT": 0.09995833457893262,
+      "P05_SAMPLED_WEIGHT": 0.06894316620616905,
+      "P95_SAMPLED_WEIGHT": 0.13432748813460416
+    },
+    {
+      "CATEGORY": "cultural_impact",
+      "FROZEN_TOTAL_WEIGHT": 0.1,
+      "GROUP": "broader_legacy",
+      "MARGIN_CORRELATION_PLAYER_1": null,
+      "MEAN_SAMPLED_WEIGHT": 0.09999999999966677,
+      "P05_SAMPLED_WEIGHT": 0.1,
+      "P95_SAMPLED_WEIGHT": 0.1
+    }
+  ],
+  "simulation_result": {
+    "players": [
+      {
+        "mean_score": 89.25736468729065,
+        "p05_score": 88.21729913339506,
+        "p95_score": 90.28911781542982,
+        "player": "LeBron James",
+        "win_rate": 0.601484
+      },
+      {
+        "mean_score": 89.1429307958726,
+        "p05_score": 88.16515556196616,
+        "p95_score": 90.04842032328116,
+        "player": "Michael Jordan",
+        "win_rate": 0.398516
+      }
+    ],
+    "win_rate_margin": 0.20296800000000004,
+    "winner": "LeBron James"
+  },
+  "source_branch": "feature/model-integrity",
+  "source_commit": "57e504601898afe4e8ead2fa1e51d25990b47de2"
+}

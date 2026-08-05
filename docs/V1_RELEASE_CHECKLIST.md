@@ -55,3 +55,4 @@
 - [ ] Screenshots complete
 - [ ] Release tag created
 - [ ] LinkedIn post finalized
+- [x] Final preregistered simulation executed once and release bundle frozen

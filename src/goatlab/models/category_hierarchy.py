@@ -84,8 +84,19 @@ def validate_hierarchy_config(config: dict[str, Any]) -> None:
     if not np.isclose(sum(caps), 1.0, atol=1e-9):
         raise ValueError("Category group caps must sum to 1.")
 
-    if bool(config.get("final_simulation_allowed", False)):
-        raise ValueError("This patch may not unlock the final simulation.")
+    final_allowed = bool(
+        config.get("final_simulation_allowed", False)
+    )
+    required_freezes = (
+        bool(config.get("hierarchy_frozen", False)),
+        bool(config.get("group_caps_frozen", False)),
+        bool(config.get("production_weights_frozen", False)),
+    )
+    if final_allowed and not all(required_freezes):
+        raise ValueError(
+            "Final simulation requires the hierarchy, group caps, "
+            "and production weights to be frozen."
+        )
 
 
 def build_weight_table(config: dict[str, Any]) -> pd.DataFrame:

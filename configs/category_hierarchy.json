@@ -2,8 +2,8 @@
   "version": "1.0",
   "hierarchy_frozen": true,
   "group_caps_frozen": true,
-  "production_weights_frozen": false,
-  "final_simulation_allowed": false,
+  "production_weights_frozen": true,
+  "final_simulation_allowed": true,
   "correlation_advisory_threshold": 0.8,
   "minimum_reference_rows": 30,
   "groups": [

@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "production_scale": "bounded_logit_tail",
+  "production_scale_categories": [
+    "peak",
+    "prime",
+    "longevity",
+    "regular_season",
+    "playoffs",
+    "offense"
+  ],
+  "native_scale_categories": [
+    "defense",
+    "winning_context",
+    "cultural_impact"
+  ],
+  "defense_scale_policy": "Defense remains on its current 0-100 composite evidence scale because it combines a historical box percentile with awards evidence. The old category-scaling audit defense row represents only the box subcomponent and is not used as the production defense score.",
+  "hierarchy_config": "configs/category_hierarchy.json",
+  "simulation": {
+    "simulations": 250000,
+    "random_seed": 23,
+    "within_group_concentration": 100.0
+  },
+  "mandatory_audits": [
+    "category_hierarchy_audit.json",
+    "cultural_impact_sensitivity_audit.json",
+    "defense_evidence_audit.json",
+    "evidence_uncertainty_audit.json",
+    "impact_metric_audit.json",
+    "playoff_game_audit.json",
+    "team_context_audit.json"
+  ],
+  "advisory_audits": [
+    "expert_evidence_audit.json"
+  ],
+  "production_weights_frozen": true,
+  "production_scale_frozen": true,
+  "final_simulation_allowed": true
+}

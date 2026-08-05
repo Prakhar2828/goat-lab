@@ -21,6 +21,7 @@
 - [x] Supporting-cast, injury, and team-context policy audited
 - [x] Game-level playoff evidence audited
 - [x] Cultural-impact weighting sensitivity frozen
+- [x] Final production scale, hierarchy weights, simulation seed, and release gate frozen
 - [ ] Impact metrics integrated
 - [ ] Supporting-cast context integrated
 - [ ] Game-level playoff analysis integrated

@@ -112,7 +112,6 @@ the `v1.0.0` tag.
 - `docs/METHODOLOGY.md` — transformations and model design
 - `docs/MODEL_CARD.md` — intended use and risks
 - `docs/RELEASE_QA.md` — release validation procedure
-- `docs/LINKEDIN_POST.md` — publication-ready project summary
 
 ## Research honesty
 

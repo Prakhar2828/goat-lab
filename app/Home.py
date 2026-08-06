@@ -31,6 +31,63 @@ the answer.
 """
 )
 
+st.info(
+    "GOAT Lab has multiple interactive pages. "
+    "📱 On a phone, tap the » icon in the top-left to open the full menu. "
+    "💻 On a laptop, use the sidebar on the left. "
+    "You can also use the buttons below to jump directly to the main sections."
+)
+
+st.subheader("Explore the full analysis")
+
+st.caption(
+    "Start anywhere. The menu contains all nine analysis pages, while these "
+    "shortcuts take you to the most useful sections."
+)
+
+st.page_link(
+    "pages/1_Career_Curves.py",
+    label="📈 Compare their careers season by season",
+    width="stretch",
+)
+
+st.page_link(
+    "pages/2_Peak_Prime_Longevity.py",
+    label="⛰️ Compare peak, prime, and longevity",
+    width="stretch",
+)
+
+st.page_link(
+    "pages/3_Playoffs.py",
+    label="🏆 Explore playoff performance",
+    width="stretch",
+)
+
+st.page_link(
+    "pages/7_Argument_Explorer.py",
+    label="💬 Explore common Jordan vs. LeBron arguments",
+    width="stretch",
+)
+
+st.page_link(
+    "pages/8_Weight_Simulator.py",
+    label="🎛️ Build your own GOAT definition",
+    width="stretch",
+)
+
+st.page_link(
+    "pages/9_Methodology.py",
+    label="📚 Read how the analysis works",
+    width="stretch",
+)
+
+st.sidebar.markdown("### Explore GOAT Lab")
+st.sidebar.caption(
+    "Use the page list above to move through all nine sections of the analysis."
+)
+
+st.divider()
+
 manifest = load_release_manifest()
 scores = load_parquet("production_hierarchy_scores.parquet")
 category_scores = load_parquet("production_category_scores.parquet")
@@ -86,7 +143,7 @@ st.write(
 st.page_link(
     "pages/8_Weight_Simulator.py",
     label="🎛️ Build your own GOAT definition",
-    use_container_width=True,
+    width="stretch",
 )
 
 with st.expander("How the 250,000-setup stress test worked"):
@@ -135,7 +192,7 @@ category_figure = px.bar(
         "PLAYER_NAME": "Player",
     },
 )
-st.plotly_chart(category_figure, use_container_width=True)
+st.plotly_chart(category_figure, width="stretch")
 
 st.caption(
     "Largest visible split: Jordan gains strongly from defense; LeBron gains from "
@@ -170,7 +227,7 @@ with st.expander("Why another reasonable scoring method can change the winner"):
                     "Leader",
                 ]
             ],
-            use_container_width=True,
+            width="stretch",
             hide_index=True,
         )
 
